@@ -3,30 +3,41 @@ require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
+var helmet = require('helmet');
 
 //******************************************** */
 
 const mongoDb  = require('./routes/fishes_router');
 
 const app = express();
+
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }))
 
 
+// Middleware
+app.use(morgan('dev'));
+
+
+//Helmet
+app.use(helmet());
+app.disable('x-powered-by');
 
 
 //database connection
 require('./utils/mongoDb');
 
+
 // Directorios archivos staticos
 app.use(express.static(__dirname + '/public'));
 
+
+//Routing 
+app.use('/api', mongoDb);
+
+
 //Llamada a puerto
 const port = 5000; 
-
 app.listen(port, () => {
     console.log(`Servidor corriendo`)
 })
-
-
-app.use('/api', mongoDb);

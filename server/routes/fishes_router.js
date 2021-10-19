@@ -3,19 +3,19 @@ const express = require('express');
 const {
     getAllFishes,
     getFishById, 
+    postNewFish
 } = require("../controllers/api_fishes_controllers"); 
 
 
-//GET all fishes from db
-//GET /api/fishes
-// Public
+
+//ENDPOINTS USUARIOS LOGGEADOS
 router.get('/', getAllFishes); 
-
-
-//GET all fishes by Id from db
-//GET /api/fishes/:id
-// Public
 router.get('/:id', getFishById);
+
+router.post('postfish', postNewFish)
+
+
+
 
 
 module.exports = router
