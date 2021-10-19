@@ -5,9 +5,15 @@ const express = require('express');
 const morgan = require('morgan');
 
 //******************************************** */
+
+const mongoDb  = require('./routes/fishes_router');
+
 const app = express();
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }))
+
+
+
 
 //database connection
 require('./utils/mongoDb');
@@ -23,3 +29,4 @@ app.listen(port, () => {
 })
 
 
+app.use('/api', mongoDb);

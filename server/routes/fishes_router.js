@@ -16,3 +16,6 @@ router.get('/', getAllFishes);
 //GET /api/fishes/:id
 // Public
 router.get('/:id', getFishById);
+
+
+module.exports = router
