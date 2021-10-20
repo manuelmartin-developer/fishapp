@@ -1,34 +1,75 @@
 import React from "react";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigation from "@mui/material/BottomNavigation";
 import Home from "@mui/icons-material/Home";
 import Camera from "@mui/icons-material/Camera";
 import SetMeal from "@mui/icons-material/SetMeal";
+import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+import ScienceIcon from "@mui/icons-material/Science";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 
 import "./Nav.scss";
 
 const Nav = () => {
-  const [value, setValue] = React.useState('recents');
+  const [value, setValue] = React.useState("recents");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+
   return (
     <Paper
-      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+      sx={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        justifyContent: "center",
+        paddingRight:2,
+        paddingLeft: 2
+      }}
       elevation={3}
     >
-       <BottomNavigation
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-    >
-      <BottomNavigationAction label="Home" icon={<Home />} />
-      <BottomNavigationAction label="Home" icon={<Home />} />
-      <BottomNavigationAction label="Foto" icon={<Camera />} />
-      <BottomNavigationAction label="Mi Acuario" icon={<SetMeal />} />
+      <BottomNavigation
+        sx={{ width: "100%", }}
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      >
+        <BottomNavigationAction
+          sx={{ paddingLeft: 1, paddingRight: 1 }}
+          label="Home"
+          component={Link}
+          to="/"
+          icon={<Home />}
+        />
+        <BottomNavigationAction
+          sx={{ paddingLeft: 1, paddingRight: 1 }}
+          label="Acuario"
+          component={Link}
+          to="/aquarium"
+          icon={<SetMeal />}
+        />
+        <BottomNavigationAction
+          sx={{ paddingLeft: 1, paddingRight: 1}}
+          label="Identificar"
+          component={Link}
+          to="/camera"
+          icon={<Camera />}
+        />
+        <BottomNavigationAction
+          sx={{ paddingLeft: 1, paddingRight: 1 }}
+          label="Diagnóstico"
+          component={Link}
+          to="/diagnosis"
+          icon={<ScienceIcon />}
+        />
+        <BottomNavigationAction
+          sx={{ paddingLeft: 1, paddingRight: 1 }}
+          label="Experto"
+          component={Link}
+          to="/expert"
+          icon={<LocalHospitalIcon />}
+        />
       </BottomNavigation>
     </Paper>
   );
