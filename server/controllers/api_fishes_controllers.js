@@ -5,6 +5,7 @@ const Fish = require('../models/mongoDb_model');
 
 //Para todos los Peces
 const getAllFishes = async (req, res) => {
+
     try {
         const fishes = await Fish.find({}); 
         res.json(fishes); 
@@ -32,14 +33,19 @@ const getFishById = async (req, res) => {
 
 //Para que el usuario registre en el database sus peces
 const postNewFish = async (req, res) => {
-    const newFish = new Fish ({
-        mail: req.body.mail,
-        info: req.body.info,
-        
-    })
-    const addNewFish = await newFish.save()
 
-    res.status(302).redirect('/postfish')
+    try {
+        
+        const newFish = new Fish ({
+            mail: req.body.mail,
+            info: req.body.info,
+
+        })
+        const addNewFish = await newFish.save()
+
+    } catch {
+        res.status(201)
+    }
 }
 
 

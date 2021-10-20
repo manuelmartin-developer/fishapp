@@ -12,7 +12,7 @@ const {
 router.get('/', getAllFishes); 
 router.get('/:id', getFishById);
 
-router.post('postfish', postNewFish)
+router.post('/postfish', postNewFish)
 
 
 
