@@ -8,6 +8,7 @@ var helmet = require('helmet');
 //******************************************** */
 
 const mongoDb  = require('./routes/fishes_router');
+const dbpg = require('./routes/fishes_router')
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.disable('x-powered-by');
 
 //database connection
 require('./utils/mongoDb');
+require('./utils/dbpg'); 
 
 
 // Directorios archivos staticos
@@ -34,6 +36,7 @@ app.use(express.static(__dirname + '/public'));
 
 //Routing 
 app.use('/api', mongoDb);
+/* app.use('/api', dbpg ) */
 
 
 //Llamada a puerto
