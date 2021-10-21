@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.URI_DATABASE, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://fullsifhapp:1234fish@cluster0.boh9t.mongodb.net/FULLFISHAPP?authSource=admin&replicaSet=atlas-6hm7ti-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 
