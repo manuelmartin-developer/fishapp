@@ -1,9 +1,11 @@
 import React from "react";
+import { Switch, Route } from 'react-router-dom';
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import Home from "@mui/icons-material/Home";
 import Camera from "@mui/icons-material/Camera";
 import SetMeal from "@mui/icons-material/SetMeal";
+import Aquarium from "../Aquarium"
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import ScienceIcon from "@mui/icons-material/Science";
 import Paper from "@mui/material/Paper";
@@ -28,6 +30,7 @@ const Nav = () => {
       }}
       elevation={3}
     >
+      
       <BottomNavigation
         sx={{ width: "100%", }}
         value={value}
@@ -35,6 +38,7 @@ const Nav = () => {
           setValue(newValue);
         }}
       >
+      
         <BottomNavigationAction
           sx={{ paddingLeft: 1, paddingRight: 1 }}
           label="Home"
@@ -42,6 +46,8 @@ const Nav = () => {
           to="/"
           icon={<Home />}
         />
+
+    
         <BottomNavigationAction
           sx={{ paddingLeft: 1, paddingRight: 1 }}
           label="Acuario"
@@ -49,6 +55,7 @@ const Nav = () => {
           to="/aquarium"
           icon={<SetMeal />}
         />
+    
         <BottomNavigationAction
           sx={{ paddingLeft: 1, paddingRight: 1}}
           label="Identificar"
