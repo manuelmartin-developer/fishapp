@@ -1,3 +1,53 @@
-.css-bnj8z7-MuiButtonBase-root-MuiIconButton-root{
-    
+.camera{
+
+    &-capture-icon{
+        width: 100%;
+        display: flex;
+        position: absolute;
+        bottom: 90px;
+        justify-content: center;
+    }
+    &-capture{
+        
+        margin-top: 80px;
+        display: flex;
+        justify-content: center;
+
+        & > img {
+          
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+           
+        }
+    }
+
+
+    &-close-icon{
+        width: 100%;
+        padding: 0 20px;
+        display: flex;
+        justify-content: right;
+        position: absolute;
+        top: 50px;
+        z-index: 9;
+    }
+
+    &-fishname{
+       
+        display: flex;
+        justify-content: center;
+        margin-top: 250px;
+    }
+
+    &-no-identify{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 300px;
+    }
 }
+
