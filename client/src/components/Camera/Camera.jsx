@@ -15,6 +15,8 @@ const Camera = () => {
     width: 360,
     height: 560,
     facingMode: "user",
+    // Cambiar en producción para activar la cámara trasera
+    // facingMode: { exact: "environment" },
   };
 
   const capture = () => {
@@ -32,7 +34,7 @@ const Camera = () => {
     
     console.log(photo);
     setIdentified(true);
-      // Enviar imageSrc a endpoint
+      // Enviar photo a endpoint
     /**
      * response ok:
      * setIdentified(true)
