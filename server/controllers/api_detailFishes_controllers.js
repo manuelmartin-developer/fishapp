@@ -1,34 +1,31 @@
-
-const Fish = require('../models/sql_detailFish_model');
-/* const bcrypt = require('bcrypt'); */
-
+const { getDetailsFromDB, getDiagnosisFromDB } = require('../models/sql_detailFish_model');
 
 const fish_controller = {
 
+    getOneFishDetail: async (req, res) => {
 
-    getFishDetails: async (req, res) => {
         try {
-            const response = await Fish.getFishes()
-            res.status(200).json(response);
-            
-        } catch (err) {
+            const name = await req.body.name;
+            const details = await getDetailsFromDB(name);
+            res.status(200).json(details);
 
-            console.log(err)
-
+        } catch (error) {
             res.status(400).json({
                 error: error.message
-            
             });
         }
     },
+    getDiagnosis: async (req, res) => {
+        try {
+            const name = await req.body.name;
+            const diagnosis = await getDiagnosisFromDB(name);
+            res.status(200).json(diagnosis);
 
-
-    getOneFishDetail: async (req, res) => {
-
-        const oneProfile = await Fish.getOneFishDetail(req.body.email); 
-
-        res.status(200).json(oneProfile)
-
+        } catch (err) {
+            res.status(400).json({
+                error: error.message
+            });
+        }
     },
 };
 
