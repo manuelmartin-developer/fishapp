@@ -1,23 +1,22 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { Link } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
 import Webcam from "react-webcam";
 import CircularProgress from "@mui/material/CircularProgress";
 import CameraIcon from "@mui/icons-material/Camera";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Toast } from "../../hooks/useToast";
 import { fishContext } from '../../contexts/fishContext';
+import { photoContext } from '../../contexts/photoContext';
 
 const Camera = () => {
   const webcamRef = useRef(null);
-  const [photo, setPhoto] = useState("");
-  const [identified, setIdentified] = useState(false);
+  const [identified, setIdentified] = useState();
   const [loading, setLoading] = useState(false);
-  const { user, isAuthenticated, isLoading } = useAuth0();
+
   const {fishName, setFishName} = useContext(fishContext);
-  const history = useHistory();
+  const {photo, setPhoto} = useContext(photoContext);
+
 
 
   const videoConstraints = {

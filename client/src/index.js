@@ -11,7 +11,7 @@ ReactDOM.render(
    <Auth0Provider
     domain="dev-gfnpmyud.us.auth0.com" 
     clientId="eBqONUaW8ZHifQdueb1YSLqAUGUMaCX2" 
-    redirectUri={window.location.origin}>
+    redirectUri='http://localhost:3001/aquarium%27%3E'>
     <App />
     </Auth0Provider>
   </React.StrictMode>,

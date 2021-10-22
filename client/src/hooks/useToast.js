@@ -10,3 +10,11 @@ export const Toast = Swal.mixin({
     confirmButtonText: 'Sí',
     cancelButtonText: "No"
   });
+
+export const Mixin = Swal.mixin({
+  toast: true,
+  position: "top",
+  showConfirmButton: false,
+  timer: 2000,
+  timerProgressBar: true,
+});
