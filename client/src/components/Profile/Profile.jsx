@@ -10,7 +10,7 @@ export const Profile = () => {
       localStorage.setItem("email", user.email);
       localStorage.setItem("isLogged", true);
     }
-  }, [user.email]);
+  }, [user.email, isAuthenticated]);
 
   if (isLoading) {
     return <div>Loading...</div>;
