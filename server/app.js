@@ -17,6 +17,7 @@ const corsOptions = {
     origin: [
         "https://localhost:5000",
         "https://localhost:3001",
+        "https://server-fishapp.herokuapp.com"
     ]
 };
 
@@ -44,7 +45,7 @@ app.use('/api', api_fishes);
 
 
 //Llamada a puerto
-const port = 5000;
-app.listen(port, () => {
+
+app.listen((process.env.PORT || 5000), () => {
     console.log(`Servidor corriendo`)
 })
