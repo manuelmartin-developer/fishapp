@@ -17,6 +17,7 @@ const corsOptions = {
     origin: [
         "https://localhost:5000",
         "https://localhost:3001",
+        "https://server-fishapp.herokuapp.com"
     ]
 };
 
