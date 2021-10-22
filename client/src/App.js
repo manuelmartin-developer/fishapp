@@ -8,7 +8,7 @@ import { photoContext } from './contexts/photoContext';
 
 function App() {
 
-  const [fishName, setFishName] = useState("Guppy");
+  const [fishName, setFishName] = useState("guppy");
   const [photo, setPhoto] = useState("");
 
 
