@@ -31,7 +31,7 @@ const Camera = () => {
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setPhoto(imageSrc); 
-    setIdentified(false); 
+    setIdentified(true); 
   };
 
   const close = () => {
