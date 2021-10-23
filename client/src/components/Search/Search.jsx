@@ -2,12 +2,11 @@ import React, { useEffect, useContext, useState } from "react";
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import { fishContext } from "../../contexts/fishContext";
 import axios from "axios";
 
 const Search = () => {
 
-  const { fishName, setFishName } = useContext(fishContext);
+  const [fishName, setFishName ] = useState("");
   const [fishesNames, setFisheshName] = useState([]);
   const [details, setDetails] = useState([]);
 
@@ -73,7 +72,6 @@ const Search = () => {
     
   }, [fishName]);
   
-  // console.log(fishesNames)
 
   return (
     <>
@@ -100,6 +98,7 @@ const Search = () => {
     </div>
      {fishName ?
     <div className="details">
+         <p>{details.nombre}</p>     
          <p>{details.latin}</p>     
     </div>
     :

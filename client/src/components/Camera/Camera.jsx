@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Webcam from "react-webcam";
 import CircularProgress from "@mui/material/CircularProgress";
 import CameraIcon from "@mui/icons-material/Camera";
@@ -11,26 +11,25 @@ import { photoContext } from '../../contexts/photoContext';
 
 const Camera = () => {
   const webcamRef = useRef(null);
-  const [identified, setIdentified] = useState("pendind");
   const [loading, setLoading] = useState(false);
-
+  const history = useHistory();
   const {fishName, setFishName} = useContext(fishContext);
   const {photo, setPhoto} = useContext(photoContext);
 
 
 
   const videoConstraints = {
-    width: 360,
-    height: 600,
+    width: 896,
+    height: 896,
     facingMode: "user",
     // Cambiar en producción para activar la cámara trasera
     // facingMode: { exact: "environment" },
   };
 
   const capture = () => {
-    const imageSrc = webcamRef.current.getScreenshot();
+    const imageSrc = webcamRef.current.getScreenshot({width: 224, height: 224});
     setPhoto(imageSrc); 
-    setIdentified(false); 
+    setFishName("guppy"); 
   };
 
   const close = () => {
@@ -46,9 +45,13 @@ const Camera = () => {
   const reset = () => {
     setPhoto("");
   }
+  const gotoSearch = () =>{
+    setPhoto("");
+    history.push("/search");
+  }
 
   useEffect(() => {
-    console.log(identified);
+   
     
     // Enviar photo a endpoint
     /**
@@ -58,11 +61,12 @@ const Camera = () => {
      * Volver a tomar foto o buscar por nombre
      */
  
-  }, [photo, identified]);
+    // return () => setFishName("")
+  }, [photo]);
 
   return (
     <section className="camera">
-      {!photo || identified ==="pending"  ? (
+      {!photo  ? (
         <>
           <Webcam
             audio={false}
@@ -75,9 +79,8 @@ const Camera = () => {
           />
           <div className="camera-capture-icon">
             <IconButton
-              sx={{ color: "white" }}
+              sx={{ color: "black" }}
               onClick={capture}
-              olor="primary"
               aria-label="take picture"
               component="span"
             >
@@ -87,7 +90,7 @@ const Camera = () => {
         </>
       ) : (
         <>
-          {identified ? (
+          {fishName ? (
             <>
               <div className="camera-fishname">
                 <h1>{fishName}</h1>
@@ -113,7 +116,7 @@ const Camera = () => {
 
               <h1>No identificado</h1>
               <button onClick={()=>reset()}>Volver a tomar foto</button>
-              <Link to="/search"><button >Buscar por nombre</button></Link>
+              <button onClick={()=>gotoSearch()}>Buscar por nombre</button>
             </div>
 
           )}
