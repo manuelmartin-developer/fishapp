@@ -11,7 +11,7 @@ import { photoContext } from '../../contexts/photoContext';
 
 const Camera = () => {
   const webcamRef = useRef(null);
-  const [identified, setIdentified] = useState();
+  const [identified, setIdentified] = useState("pendind");
   const [loading, setLoading] = useState(false);
 
   const {fishName, setFishName} = useContext(fishContext);
@@ -30,7 +30,7 @@ const Camera = () => {
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setPhoto(imageSrc); 
-    setIdentified(true); 
+    setIdentified(false); 
   };
 
   const close = () => {
@@ -40,7 +40,6 @@ const Camera = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setPhoto("");
-        // setIdentified(false);
       }
     });
   };
@@ -49,7 +48,7 @@ const Camera = () => {
   }
 
   useEffect(() => {
-    console.log(photo);
+    console.log(identified);
     
     // Enviar photo a endpoint
     /**
@@ -58,11 +57,12 @@ const Camera = () => {
      * response error:
      * Volver a tomar foto o buscar por nombre
      */
+ 
   }, [photo, identified]);
 
   return (
     <section className="camera">
-      {!photo ? (
+      {!photo || identified ==="pending"  ? (
         <>
           <Webcam
             audio={false}

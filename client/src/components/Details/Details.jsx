@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Details = () => {
   const { fishName, setFishName } = useContext(fishContext);
-  const { photo } = useContext(photoContext);
+  const { photo, setPhoto } = useContext(photoContext);
   const [details, setDetails] = useState([]);
   const isLogged = localStorage.getItem("isLogged");
   const email = localStorage.getItem("email");
@@ -21,6 +21,7 @@ const Details = () => {
       icon: "success",
       title: "El pez ha sido agregado a Mi Acuario",
     });
+    setPhoto("");
   };
 
   useEffect(() => {

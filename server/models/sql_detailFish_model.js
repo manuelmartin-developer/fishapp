@@ -32,8 +32,26 @@ const getDiagnosisFromDB = async (name) => {
     }
 }
 
+const getAllNames = async () => {
+
+    let client, result;
+    try {
+
+        client = await pool.connect();
+        result = await client.query(`SELECT nombre FROM peces`);
+
+        return result.rows;
+
+    } catch (err) {
+        console.log(err);
+    } finally {
+        client.release();
+    }
+}
+
 
 module.exports = {
     getDetailsFromDB,
-    getDiagnosisFromDB
+    getDiagnosisFromDB,
+    getAllNames
 };
