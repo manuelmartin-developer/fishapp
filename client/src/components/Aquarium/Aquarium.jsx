@@ -4,11 +4,15 @@ import { Login }  from '../Login/Login'
 import { Profile } from '../Profile/Profile'
 import { Logout } from '../Logout/Logout'
 import Form from "../Form/Form";
-
+import Camera from "../Camera/Camera"
 
 function Aquarium() {
 
   const { isAuthenticated } = useAuth0(); 
+
+  const [show, setShow] = useState(false); 
+
+
 
   return (
     <>
@@ -22,10 +26,15 @@ function Aquarium() {
                 <div>
                   {isAuthenticated ? <>
                     <Profile/>
-                    <Form/>
+                    <button onClick={() => setShow(!show)}>
+                      Añadir de mi galería</button>
+                    {show && <Form/>}
                     <Logout/>
                     </>
-                    : <Login/> }
+                    
+                    :<Login/>
+                      }
+                      
                 </div>
                 <div>
                 </div>

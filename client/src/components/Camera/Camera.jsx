@@ -17,7 +17,7 @@ const Camera = () => {
   const {fishName, setFishName} = useContext(fishContext);
   const {photo, setPhoto} = useContext(photoContext);
 
-
+  
 
   const videoConstraints = {
     width: 360,
@@ -30,7 +30,7 @@ const Camera = () => {
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setPhoto(imageSrc); 
-    setIdentified(false); 
+    setIdentified(true); 
   };
 
   const close = () => {
@@ -47,6 +47,7 @@ const Camera = () => {
     setPhoto("");
   }
 
+  
   useEffect(() => {
     console.log(identified);
     
@@ -92,7 +93,7 @@ const Camera = () => {
               <div className="camera-fishname">
                 <h1>{fishName}</h1>
                 <Link to="/details"><button>Ir a detalles</button></Link>
-                
+                <Link to="/details"><button>Añadir a mi acuario</button></Link>
               </div>
               <div className="camera-capture">
                 <img src={photo} alt="cam_capture" />
