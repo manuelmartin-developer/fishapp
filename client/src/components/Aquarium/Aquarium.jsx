@@ -30,6 +30,7 @@ function Aquarium() {
                       Añadir de mi galería</button>
                     {show && <Form/>}
                     <Logout/>
+
                     </>
                     
                     :<Login/>

@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../../firebase";
 import { app } from "../../firebase";
-import { useForm } from "react-hook-form";
-
 
 const Form = () => {
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
-
   const [fileUrl, setFileUrl] = useState("");
   const [files, setFiles] = useState([]);
   const email = localStorage.getItem("email");
@@ -26,8 +20,10 @@ const Form = () => {
     setFileUrl(urlLink);
   };
 
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
+    
     const fileName = e.target.name.value;
     const fileAge = e.target.age.value; 
     const fileAdop = e.target.adopt.value; 
@@ -36,7 +32,7 @@ const Form = () => {
       .doc(fileName)
       .set({name: fileName,
             age: fileAge,
-            adopt: fileAdop, 
+            adopt: fileAdop,
             url: fileUrl,
             });
   };
@@ -52,26 +48,19 @@ const Form = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}> {/* Recoge los datos a través de este formulario */}
-
-        <input onChange={handleChange} {...register("file", { required: true })} type="file" className="input-value"/>
-        <input {...register("name", { required: true })} type="text" className="input-value" placeholder="nombre" name="name"/>
-        <input {...register("age", { required: true })} type="number" className="input-value" placeholder="edad" name="age"/>
-        <input {...register("adopt", { required: true })} type="date" className="input-value" placeholder="fecha adopción"/>
+      <form onSubmit={handleSubmit}> {/* Recoge los datos a través de este formulario */}
+        <input type="file" onChange={handleChange} />
+        <input type="text" name="name" placeholder="nombre" />
+        <input type="number" name="age" placeholder="edad" />
+        <input type="date" name="adopt" placeholder="fecha adopción"/>
         <button>Upload</button>
-
-        {errors.name && errors.age && errors.adopt && <span>Por favor, rellena este campo</span>}
-      
       </form>
-
       <div className="gallery">
           {files.map((file, index) => ( /* Pinta los datos de la data base, almacenados denteo del estado files. */
             <div className="gallery-element" key={index}>
               <h3>{file.name}</h3>
               <img src={file.url} height="200px" alt="" />
-              <button>Eliminar</button>
             </div>
-         
           ))}
       </div>
     </>

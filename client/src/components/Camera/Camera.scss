@@ -1,5 +1,6 @@
 .camera{
 
+    margin-top: 120px;
     &-capture-icon{
         width: 100%;
         display: flex;
@@ -15,10 +16,10 @@
 
         & > img {
           
-            width: 200px;
-            height: 200px;
+            width: 224px;
+            height: 224px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: scale-down;
             box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
            
         }

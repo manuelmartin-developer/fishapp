@@ -5,7 +5,9 @@ export const Logout = () => {
 
   const { logout } = useAuth0(); 
 
-  return <button onClick={() => logout({returnTo: window.localStorage.clear()})}>Logout</button>;
+  return <button onClick={() => logout({
+    returnTo: window.localStorage.clear()
+  })}>Logout</button>;
 
 };
 
