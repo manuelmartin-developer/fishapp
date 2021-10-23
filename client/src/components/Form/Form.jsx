@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../../firebase";
+import { useForm } from "react-hook-form";
 import { app } from "../../firebase";
 
 const Form = () => {
+
+  const { register, watch, formState: { errors } } = useForm();
+
   const [fileUrl, setFileUrl] = useState("");
   const [files, setFiles] = useState([]);
   const email = localStorage.getItem("email");
@@ -23,14 +27,14 @@ const Form = () => {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    
+
     const fileName = e.target.name.value;
     const fileAge = e.target.age.value; 
     const fileAdop = e.target.adopt.value; 
     const refCollection = app.firestore().collection("images"); //llamada  la base de datos.
     const docFile = await refCollection
       .doc(fileName)
-      .set({name: fileName,
+      .set({email: email,
             age: fileAge,
             adopt: fileAdop,
             url: fileUrl,
@@ -50,10 +54,13 @@ const Form = () => {
     <>
       <form onSubmit={handleSubmit}> {/* Recoge los datos a través de este formulario */}
         <input type="file" onChange={handleChange} />
-        <input type="text" name="name" placeholder="nombre" />
-        <input type="number" name="age" placeholder="edad" />
-        <input type="date" name="adopt" placeholder="fecha adopción"/>
+        <input placeholder="nombre" {...register("name", { required: true, minlenght: 3 } )} className="input-value" type="text" name="name" />
+        <input placeholder="edad" {...register("age", { required: true, minlenght: 3 } )} className="input-value" type="age" name="age"  />
+        <input placeholder="fecha de adopción" {...register("adopt", { required: true, minlenght: 3 } )} className="input-value" type="date" name="adopt" />
         <button>Upload</button>
+
+
+        
       </form>
       <div className="gallery">
           {files.map((file, index) => ( /* Pinta los datos de la data base, almacenados denteo del estado files. */

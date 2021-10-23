@@ -26,8 +26,9 @@ function Aquarium() {
                 <div>
                   {isAuthenticated ? <>
                     <Profile/>
+                    <Camera/>
                     <button onClick={() => setShow(!show)}>
-                      Añadir de mi galería</button>
+                      Añadir al libro de familia</button>
                     {show && <Form/>}
                     <Logout/>
 
