@@ -1,22 +1,22 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory } from "react-router-dom";
 import Webcam from "react-webcam";
 import CircularProgress from "@mui/material/CircularProgress";
 import CameraIcon from "@mui/icons-material/Camera";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Toast } from "../../hooks/useToast";
-import { fishContext } from '../../contexts/fishContext';
-import { photoContext } from '../../contexts/photoContext';
+import { fishContext } from "../../contexts/fishContext";
+import { photoContext } from "../../contexts/photoContext";
+import axios from "axios";
 
 const Camera = () => {
   const webcamRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const {fishName, setFishName} = useContext(fishContext);
-  const {photo, setPhoto} = useContext(photoContext);
-
-
+  const { fishName, setFishName } = useContext(fishContext);
+  const { photo, setPhoto } = useContext(photoContext);
+  const photoTips = localStorage.getItem("photoTips");
 
   const videoConstraints = {
     width: 896,
@@ -27,9 +27,33 @@ const Camera = () => {
   };
 
   const capture = () => {
-    const imageSrc = webcamRef.current.getScreenshot({width: 224, height: 224});
-    setPhoto(imageSrc); 
-    setFishName("guppy"); 
+    const imageSrc = webcamRef.current.getScreenshot({
+      width: 224,
+      height: 224,
+    });
+    setPhoto(imageSrc);
+
+    const payload = { data: photo };
+
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+    (async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/api/details",
+          payload,
+          options
+        );
+        console.log(response.data);
+        setFishName("guppy")
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   };
 
   const close = () => {
@@ -44,15 +68,32 @@ const Camera = () => {
   };
   const reset = () => {
     setPhoto("");
-  }
-  const gotoSearch = () =>{
+  };
+  const gotoSearch = () => {
     setPhoto("");
     history.push("/search");
-  }
+  };
 
   useEffect(() => {
-   
-    
+    if (!photoTips) {
+      Toast.fire({
+        title: "<strong>Tips para la foto perfecta</strong>",
+        icon: "info",
+        html:
+          '<img src="https://www.hogarmania.com/archivos/201105/killi-nothobranchius-rachovii-xl-668x400x80xX.jpg"/> ' +
+          "Encuadra bien el pez en la foto ",
+        showCloseButton: true,
+        showCancelButton: false,
+        showConfirmButton: true,
+        confirmButtonText: "ok",
+        focusConfirm: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.setItem("photoTips", false);
+        }
+      });
+    }
+
     // Enviar photo a endpoint
     /**
      * response ok:
@@ -60,13 +101,13 @@ const Camera = () => {
      * response error:
      * Volver a tomar foto o buscar por nombre
      */
- 
+
     // return () => setFishName("")
   }, [photo]);
 
   return (
     <section className="camera">
-      {!photo  ? (
+      {!photo ? (
         <>
           <Webcam
             audio={false}
@@ -94,8 +135,9 @@ const Camera = () => {
             <>
               <div className="camera-fishname">
                 <h1>{fishName}</h1>
-                <Link to="/details"><button>Ir a detalles</button></Link>
-                
+                <Link to="/details">
+                  <button>Ir a detalles</button>
+                </Link>
               </div>
               <div className="camera-capture">
                 <img src={photo} alt="cam_capture" />
@@ -113,12 +155,10 @@ const Camera = () => {
             </>
           ) : (
             <div className="camera-no-identify">
-
               <h1>No identificado</h1>
-              <button onClick={()=>reset()}>Volver a tomar foto</button>
-              <button onClick={()=>gotoSearch()}>Buscar por nombre</button>
+              <button onClick={() => reset()}>Volver a tomar foto</button>
+              <button onClick={() => gotoSearch()}>Buscar por nombre</button>
             </div>
-
           )}
         </>
       )}

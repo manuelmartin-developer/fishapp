@@ -5,6 +5,7 @@ import Camera from "../Camera";
 import Aquarium from "../Aquarium"
 import Details from "../Details";
 import Search from "../Search";
+import Diagnosis from '../Diagnosis';
 
 
 
@@ -14,6 +15,7 @@ const Main = () => {
         <Switch>
           <Route path="/" component={Home} exact/>
           <Route path="/camera" component={Camera}/>
+          <Route path="/diagnosis" component={Diagnosis}/>
           {/* <Route path="/expert" component={Expert}/>   */}
           <Route path="/aquarium" component={Aquarium}/>
           <Route path="/details" component={Details}/>
