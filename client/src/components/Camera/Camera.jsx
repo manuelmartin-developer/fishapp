@@ -1,14 +1,16 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect, useContext, useCallback } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Webcam from "react-webcam";
 import CircularProgress from "@mui/material/CircularProgress";
 import CameraIcon from "@mui/icons-material/Camera";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import FlipCameraIosOutlinedIcon from "@mui/icons-material/FlipCameraIosOutlined";
 import { Toast } from "../../hooks/useToast";
 import { fishContext } from "../../contexts/fishContext";
 import { photoContext } from "../../contexts/photoContext";
 import axios from "axios";
+import { switchClasses } from "@mui/material";
 
 const Camera = () => {
   const webcamRef = useRef(null);
@@ -18,12 +20,11 @@ const Camera = () => {
   const { photo, setPhoto } = useContext(photoContext);
   const photoTips = localStorage.getItem("photoTips");
 
+  const [facingMode, setFacingMode] = useState("user");
   const videoConstraints = {
     width: 896,
-    height: 896,
-    facingMode: "user",
-    // Cambiar en producción para activar la cámara trasera
-    // facingMode: { exact: "environment" },
+    height: 1568,
+    facingMode: facingMode
   };
 
   const capture = () => {
@@ -32,7 +33,9 @@ const Camera = () => {
       height: 224,
     });
     setPhoto(imageSrc);
-    setFishName("guppy")
+
+    setFishName("guppy");
+
     const payload = { data: photo };
 
     const options = {
@@ -49,7 +52,6 @@ const Camera = () => {
           options
         );
         console.log(response.data);
-        
       } catch (error) {
         console.log(error);
       }
@@ -63,9 +65,18 @@ const Camera = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setPhoto("");
+        history.push("/");
       }
     });
   };
+
+  const switchCamera = () => {
+      facingMode === "user" ? setFacingMode({exact: 'environment'}) : setFacingMode("user")
+  };
+
+
+
+
   const reset = () => {
     setPhoto("");
   };
@@ -105,12 +116,13 @@ const Camera = () => {
     // return () => setFishName("")
   }, [photo]);
 
-  console.log(fishName)
+  console.log(facingMode);
   return (
     <section className="camera">
       {!photo ? (
         <>
           <Webcam
+            className="camera-webcam"
             audio={false}
             mirrored={true}
             ref={webcamRef}
@@ -119,15 +131,23 @@ const Camera = () => {
             videoConstraints={videoConstraints}
             screenshotQuality={1}
           />
+          <div className="camera-close">
+            <button className="camera-close-icon" onClick={() => close()}>
+              <CloseIcon className="camera-close-icon__icon" />
+            </button>
+          </div>
+          <div className="camera-switch">
+            <button className="camera-switch-icon" >
+              <FlipCameraIosOutlinedIcon className="camera-close-icon__icon" onClick={() => switchCamera()} />
+            </button>
+          </div>
           <div className="camera-capture-icon">
-            <IconButton
-              sx={{ color: "black" }}
-              onClick={capture}
-              aria-label="take picture"
-              component="span"
+            <button
+              className="camera-capture-icon__icon"
+              onClick={() => capture()}
             >
-              <CameraIcon sx={{ fontSize: "3.5rem" }} />
-            </IconButton>
+              <img src="assets/Camera/burbuja.svg" alt="" />
+            </button>
           </div>
         </>
       ) : (
@@ -143,15 +163,10 @@ const Camera = () => {
               <div className="camera-capture">
                 <img src={photo} alt="cam_capture" />
               </div>
-              <div className="camera-close-icon">
-                <IconButton
-                  sx={{ color: "black", display: "flex", position: "relative" }}
-                  onClick={close}
-                  aria-label="reload picture"
-                  component="span"
-                >
-                  <CloseIcon sx={{ fontSize: "4rem" }} />
-                </IconButton>
+              <div className="camera-close">
+                <button className="camera-close-icon" onClick={() => close()}>
+                  <CloseIcon className="camera-close-icon__icon" />
+                </button>
               </div>
             </>
           ) : (
