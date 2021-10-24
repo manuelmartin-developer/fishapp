@@ -68,6 +68,7 @@ const Camera = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setPhoto(""); //reseteamos la imagen en el caso de que se confirme la opción de salir cancelar consulta. 
+        history.push("/");
       }
     });
   };
@@ -132,12 +133,15 @@ const Camera = () => {
             videoConstraints={videoConstraints}
             screenshotQuality={1}
           />
-          <div className="camera-capture-icon">
+          <div className="camera-close">
+            <button className="camera-close-icon" onClick={() => close()}>
+              <CloseIcon className="camera-close-icon__icon" />
+            </button>
+          </div>
+           <div className="camera-capture-icon">
             <button
-              sx={{ color: "black" }}
-              onClick={capture}
-              aria-label="take picture"
-              component="span"
+              className="camera-capture-icon__icon"
+              onClick={() => capture()}
             >
               <img src="assets/Camera/burbuja.svg" alt="" />
             </button>
