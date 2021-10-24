@@ -70,6 +70,7 @@ const Details = () => {
         >
           Agregar a mi acuario
         </Button>
+     
     </section>
   );
 };

@@ -32,7 +32,7 @@ const Camera = () => {
       height: 224,
     });
     setPhoto(imageSrc);
-
+    setFishName("guppy")
     const payload = { data: photo };
 
     const options = {
@@ -49,8 +49,6 @@ const Camera = () => {
           options
         );
         console.log(response.data);
-
-        setFishName("guppy")
         
       } catch (error) {
         console.log(error);
