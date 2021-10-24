@@ -18,20 +18,20 @@ const config = {
       widgetFunc: (props) => <Options {...props} />,
     },
     {
-      widgetName: "javascriptQuiz",
+      widgetName: "consultaMedica",
       widgetFunc: (props) => <Questions {...props} />,
       props: {
         questions: [
           {
-            question: "What is closure?",
-            answer:
-              "Closure is a way for a function to retain access to it's enclosing function scope after the execution of that function is finished.",
+            question: "¿Qué síntomas tiene?",
+            /* answer:
+              "Puntos blancos en las escamas" */
             id: 1,
           },
           {
-            question: "Explain prototypal inheritance",
-            answer:
-              "Prototypal inheritance is a link between an object and an object store that holds shared properties. If a property is not found on the host object, javascript will check the prototype object.",
+            question: "Presenta dificultades para nadar?",
+            /* answer:
+              , */
             id: 2,
           },
         ],

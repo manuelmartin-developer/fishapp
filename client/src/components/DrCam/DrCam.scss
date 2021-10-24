@@ -1,0 +1,42 @@
+.confirmation-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px;
+    width: 292px;
+}
+
+.confirmation-buttons button {
+  
+    width: 120px;
+    height: 40px;
+    border-radius: 85px;
+    padding: 16px;
+
+}
+
+.yes-button {
+    background-color: #FF7866;
+    border: none;
+    color: white;
+}
+
+.no-button {
+    background-color: white;
+    border: none;
+    color: #158478;
+}
+
+.confirmation-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+    width: 292px;
+    height: 176px; 
+    background-color: #FFFFFF;
+}
+
+

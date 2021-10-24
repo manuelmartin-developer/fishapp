@@ -5,7 +5,7 @@ const Options = (props) => {
   const options = [
     {
       text: "Síntomas",
-      handler: props.actionProvider.handleJavascriptQuiz,
+      handler: props.actionProvider.handleQuestions,
       id: 1,
     },
     { text: "Consejos", handler: () => {}, id: 2 },

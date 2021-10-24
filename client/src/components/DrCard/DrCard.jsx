@@ -7,10 +7,17 @@ import { Link } from "react-router-dom";
 import { app } from "../../firebase";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
 
-const Details = () => {
+import "./DrCard.scss"
+
+const DrCard = () => {
+
+
+
+  const [value, setValue] = React.useState([]);
   
-  const { fishName, setFishName } = useContext(fishContext);
+ /*  const { fishName, setFishName } = useContext(fishContext); */
   const { photo, setPhoto } = useContext(photoContext);
   const [details, setDetails] = useState([]);
   const isLogged = localStorage.getItem("isLogged");
@@ -18,7 +25,13 @@ const Details = () => {
   const history = useHistory();
 
 
-  const addMyAquarium = async () => {
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+
+  const sendRequisition = async () => {
     if(isLogged){
       const refCollection = app.firestore().collection("images");
       const docFile = await refCollection.doc().set({ email: email, url: photo });
@@ -34,46 +47,31 @@ const Details = () => {
         text: " Para guardar fotos debes estar loggeado"
       }).then((result) => {
         if (result.isConfirmed) {
-          history.push("/aquarium");
+          history.push("/");
         }
       });
     }
   }
-  useEffect(() => {
-    const payload = { name: fishName };
-    const options = {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    };
-    (async () => {
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/api/details",
-          payload,
-          options
-        );
-        setDetails(response.data[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, [fishName]);
-  console.log(details); // Borrar
+
+
   return (
-    <section className="details">
-      <p>{fishName}</p>
-        <Button
-          onClick={() => {
-            addMyAquarium();
-          }}
-          variant="outlined"
-        >
-          Agregar a mi acuario
-        </Button>
-     
+    <section className="doctor-container">
+
+    <form action="" onChange={handleChange} className="container-form">
+      <h3>¿Qué síntomas tiene tu pez?</h3>
+      <div>
+      <textarea className="text-field"
+          onChange={handleChange}
+
+        />
+      </div>
+      <div className="confirmation-buttons">
+        <button className="yes-button">Aceptar</button>
+        <button className="cancelar-button">Cancelar</button>
+      </div>
+    </form>
+
     </section>
   );
 };
-export default Details;
+export default DrCard;

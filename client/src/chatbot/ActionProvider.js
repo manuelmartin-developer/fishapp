@@ -5,13 +5,13 @@ class ActionProvider {
   }
 
   greet = () => {
-    const message = this.createChatBotMessage("Hello friend.");
+    const message = this.createChatBotMessage("Hola!");
     this.addMessageToState(message);
   };
 
-  handleJavascriptQuiz = () => {
+  handleQuestions = () => {
     const message = this.createChatBotMessage(
-      "Fantastic. Here is your quiz. Good luck!",
+      "Genial, veamos que sucede!",
       {
         widget: "javascriptQuiz",
       }
