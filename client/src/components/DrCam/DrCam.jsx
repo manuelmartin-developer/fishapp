@@ -133,14 +133,14 @@ const Camera = () => {
             screenshotQuality={1}
           />
           <div className="camera-capture-icon">
-            <IconButton
+            <button
               sx={{ color: "black" }}
               onClick={capture}
               aria-label="take picture"
               component="span"
             >
-              <CameraIcon sx={{ fontSize: "3.5rem" }} />
-            </IconButton>
+              <img src="assets/Camera/burbuja.svg" alt="" />
+            </button>
           </div>
         </>
       ) : (

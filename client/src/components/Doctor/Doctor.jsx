@@ -13,7 +13,6 @@ import './Doctor.scss'
 const Doctor = () => {
 
   const { isAuthenticated } = useAuth0(); 
-  const [showCamera, setShowCamera] = useState(false); 
 
   const [startConsulta, setStartConsulta] = useState(false); 
 
@@ -28,8 +27,13 @@ const Doctor = () => {
     {!startConsulta ? (
       <>
       <div className="conta">
-          <h3>¿Tienes dudas sobre tu pez?</h3>
-          <h3>Nuestros especialistas prodrán resolver todas tus dudas</h3>
+          <img src="assets/Aquarium/Espacio.png" height="160px" alt="" />
+          <div className="class-div">
+            <h3>¿Tienes dudas sobre tu pez?</h3>
+          </div>
+          <div className="div-text">
+            <p>Nuestros especialistas prodrán resolver todas tus dudas</p>
+          </div>
           <button onClick={()=> {start()}}>ENVIAR FOTOCONSULTA</button>
       </div>
       </>

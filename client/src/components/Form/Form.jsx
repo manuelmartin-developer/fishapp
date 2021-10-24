@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { storage } from "../../firebase";
 import { useForm } from "react-hook-form";
 import { app } from "../../firebase";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
+import "./Form.scss"
 
 const Form = () => {
 
@@ -51,26 +55,27 @@ const Form = () => {
   }, []);
 
   return (
-    <>
-      <form onSubmit={handleSubmit}> {/* Recoge los datos a través de este formulario */}
-        <input type="file" onChange={handleChange} />
-        <input placeholder="nombre" {...register("name", { required: true, minlenght: 3 } )} className="input-value" type="text" name="name" />
-        <input placeholder="edad" {...register("age", { required: true, minlenght: 3 } )} className="input-value" type="age" name="age"  />
-        <input placeholder="fecha de adopción" {...register("adopt", { required: true, minlenght: 3 } )} className="input-value" type="date" name="adopt" />
-        <button>Upload</button>
+    <div className="container-form">
 
+      <form className="form"
+          onSubmit={handleSubmit}
+    >
+          <TextField id="outlined-basic" label="nombre del pez" variant="outlined" placeholder="nombre" {...register("name", { required: true, minlenght: 3 } )} className="input-value" type="text" name="name"  />
+          <TextField id="outlined-basic" label="edad del pez" variant="outlined" placeholder="edad" {...register("age", { required: true, minlenght: 3 } )} className="input-value" type="age" name="age"  />
+          <TextField id="date" type="date"  {...register("adopt", { required: true, minlenght: 3 } )} className="input-value" name="adopt"   />
+          <input id="outlined-basic" variant="outlined" type="file" onChange={handleChange}  />
+          <button>GUARDAR</button>
+    </form>
 
-        
-      </form>
       <div className="gallery">
           {files.map((file, index) => ( /* Pinta los datos de la data base, almacenados denteo del estado files. */
             <div className="gallery-element" key={index}>
               <h3>{file.name}</h3>
-              <img src={file.url} height="200px" alt="" />
+              {/* <img src={file.url} height="200px" alt="" /> */}
             </div>
           ))}
       </div>
-    </>
+      </div>
   );
 };
 

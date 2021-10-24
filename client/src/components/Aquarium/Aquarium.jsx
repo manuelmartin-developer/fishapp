@@ -6,6 +6,8 @@ import { Logout } from '../Logout/Logout'
 import Form from "../Form/Form";
 import Camera from "../Camera/Camera"
 
+import "./Aquarium.scss"
+
 function Aquarium() {
 
   const { isAuthenticated } = useAuth0(); 
@@ -23,14 +25,15 @@ function Aquarium() {
 
               <ul className="nav_links">
               </ul>
-                <div>
+                <div className="container-menu">
                   {isAuthenticated ? <>
-                    <Profile/>
-                    <Camera/>
+                    <Logout/>
+                   {/*  <Profile/> */}
+                    {/* <Camera/> */}
                     <button onClick={() => setShow(!show)}>
                       Añadir al libro de familia</button>
                     {show && <Form/>}
-                    <Logout/>
+                    
 
                     </>
                     
