@@ -33,6 +33,8 @@ const Camera = () => {
     });
     setPhoto(imageSrc);
 
+    setFishName("guppy")
+
     const payload = { data: photo };
 
     const options = {
@@ -49,7 +51,6 @@ const Camera = () => {
           options
         );
         console.log(response.data);
-        setFishName("guppy")
       } catch (error) {
         console.log(error);
       }
@@ -105,6 +106,7 @@ const Camera = () => {
     // return () => setFishName("")
   }, [photo]);
 
+  console.log(fishName)
   return (
     <section className="camera">
       {!photo ? (

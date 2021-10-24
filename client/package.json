@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
+    "@egjs/flicking-plugins": "^4.2.2",
     "@egjs/react-flicking": "^4.3.0",
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",

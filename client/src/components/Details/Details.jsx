@@ -3,7 +3,6 @@ import { fishContext } from "../../contexts/fishContext";
 import { photoContext } from "../../contexts/photoContext";
 import { Mixin, Toast } from "../../hooks/useToast";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
 import { app } from "../../firebase";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
