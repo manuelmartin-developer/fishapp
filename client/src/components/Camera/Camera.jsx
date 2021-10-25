@@ -21,6 +21,7 @@ const Camera = () => {
   const { fishName, setFishName } = useContext(fishContext);
   const { photo, setPhoto } = useContext(photoContext);
   const photoTips = localStorage.getItem("photoTips");
+  const fishNameImg = fishName.toLowerCase().replace(/ /g, "");
 
   const [facingMode, setFacingMode] = useState("user");
   // !Cambiar en producción
@@ -161,6 +162,9 @@ const Camera = () => {
                   <button className="camera-fishname-button">{fishName}</button>
                   <ArrowForwardIosIcon className="camera-fishname-button__icon" />
                 </Link>
+                <div className="camera-fishname-img">
+                  <img src={`assets/Details/${fishNameImg}.jpg`} alt="fish_photo" />
+                </div>
               </div>
               <div className="camera-result">
                 <img className="camera-result-img" src={photo} alt="cam_capture" />

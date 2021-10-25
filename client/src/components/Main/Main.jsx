@@ -7,6 +7,7 @@ import Details from "../Details";
 import Search from "../Search";
 import Doctor from "../Doctor";
 import DrCard from "../DrCard"; 
+import Diagnosis from "../Diagnosis"; 
 
 
 const Main = () => {
@@ -18,6 +19,7 @@ const Main = () => {
           <Route path="/expert" component={Doctor}/>  
           <Route path="/aquarium" component={Aquarium}/>
           <Route path="/details" component={Details}/>
+          <Route path="/diagnosis" component={Diagnosis}/>
           <Route path="/search" component={Search}/>
           <Route path="/expertcontact" component={DrCard}/>
         </Switch>
