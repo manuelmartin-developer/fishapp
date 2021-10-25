@@ -16,6 +16,7 @@ const Details = () => {
   const isLogged = localStorage.getItem("isLogged");
   const email = localStorage.getItem("email");
   const history = useHistory();
+  const fishNameImage = fishName.toLowerCase().replace(/ /g,""); 
 
 
   const addMyAquarium = async () => {
@@ -88,7 +89,7 @@ const Details = () => {
       </div>
       <div className="details-fishname">{fishName}</div>
       <div className="details-photo">
-        <img src={`assets/Details/${fishName}.jpg`} alt="fish_photo" />
+        <img src={`assets/Details/${fishNameImage}.jpg`} alt="fish_photo" />
       </div>
       <div className="details-title">
         <img src="assets/Details/oval.png" alt="oval_icon" />

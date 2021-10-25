@@ -21,7 +21,7 @@ function Aquarium() {
 
 
   return (
-    <section>
+    <section className="aquarium">
     {!aquarium ? (
       <>
       <div className="conta">
