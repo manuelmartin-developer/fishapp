@@ -6,7 +6,7 @@ export const Login = () => {
   //Sacamos del Hook useAuth el método loginwithRedirect
   const { loginWithRedirect } = useAuth0(); 
 
-
+  
 
   return <button onClick={() => loginWithRedirect()}>Login</button>
 };

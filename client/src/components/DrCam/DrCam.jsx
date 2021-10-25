@@ -67,7 +67,7 @@ const Camera = () => {
       title: "Deseas anular la consulta?",
     }).then((result) => {
       if (result.isConfirmed) {
-        setPhoto(""); //reseteamos la imagen en el caso de que se confirme la opción de salir cancelar consulta. 
+        setPhoto(photo); //reseteamos la imagen en el caso de que se confirme la opción de salir cancelar consulta. 
         history.push("/");
       }
     });
@@ -79,6 +79,7 @@ const Camera = () => {
 
   const goToDrCard = () => {
     history.push("/expertcontact");
+    setPhoto()
   };
 
   const goToHome = () => {
