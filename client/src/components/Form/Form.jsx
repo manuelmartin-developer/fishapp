@@ -12,8 +12,8 @@ import "./Form.scss"
 
 const Form = () => {
 
+  const history = useHistory(); 
   const { register, watch, formState: { errors } } = useForm();
-
   const [fileUrl, setFileUrl] = useState("");
   const [files, setFiles] = useState([]);
 
@@ -52,6 +52,8 @@ const Form = () => {
             adopt: fileAdop,
             url: fileUrl,
             });
+    history.push('/')
+    
   };
 
   useEffect(async () => {

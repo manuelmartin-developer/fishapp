@@ -27,7 +27,6 @@ function Aquarium() {
 
   return (
     <section className="aquarium">
-      <Header/>
     {!aquarium ? (
       <>
       <div className="conta">

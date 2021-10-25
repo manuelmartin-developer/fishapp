@@ -127,6 +127,7 @@ const Camera = () => {
         <>
           <Webcam
             audio={false}
+            
             mirrored={true}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
