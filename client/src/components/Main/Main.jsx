@@ -8,6 +8,7 @@ import Search from "../Search";
 import Doctor from "../Doctor";
 import DrCard from "../DrCard"; 
 import Diagnosis from "../Diagnosis"; 
+import Profile from "../Profile"; 
 
 
 const Main = () => {
@@ -23,6 +24,7 @@ const Main = () => {
           <Route path="/diagnosis" component={Diagnosis}/>
           <Route path="/search" component={Search}/>
           <Route path="/expertcontact" component={DrCard}/>
+          <Route path="/profile" component={Profile}/>
         </Switch>
     </main>
 

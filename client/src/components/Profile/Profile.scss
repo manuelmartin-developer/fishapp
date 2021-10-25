@@ -1,13 +1,142 @@
-.container-profile {
-
+.profile {
     display: flex;
     flex-direction: column;
-    width: 344px;
-    height: 493px;
-    background: #F7F8FC;
-    /* Card */
-    box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
-    border-radius: 28px;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+    &-image {
+        /* Rectangle 123 */
+        position: static;
+        width: 149.92px;
+        height: 149.92px;
+        left: 0px;
+        top: 0px;
+        /* Color Corporativo/Neutro Blanco */
+        border: 5.91772px solid #FFFFFF;
+        box-sizing: border-box;
+        /* Inside Auto Layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin: 0px 0px;
+        background-color: yellow;
+
+                
+    }
+
+    &-name {
+        width: 48px;
+        height: 24px;
+        left: 170px;
+        top: 208px;
+        /* Glub/Poppins/BODYB/16px Bold HL24 */
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height, or 150% */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        /* Color Corporativo/Neutro Dark/Light/Azul/20 */
+        color: #19204D;
+
+                p {
+                    padding-top: 30px;
+                }
+
+    }
+
+    &-email {
+        width: 163px;
+        height: 22px;
+        left: 106px;
+        top: 232px;
+        /* Glub/Poppins/BODY1/14px Regular HL22 */
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 22px;
+        /* identical to box height, or 157% */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        /* Color Corporativo/Neutro Dark/Light/Azul/20 */
+        color: #19204D;
+
+            p {
+                padding-top: 30px;
+            }
+    }
+
+    &-atributes {
+        display: flex;
+        flex-direction: row;
+        width: 75vw;
+        justify-content: space-between;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &-pics {
+        display: flex;
+        flex-direction: column;
+        /* Color Corporativo/Neutro Blanco */
+        background: #FFFFFF;
+        /* Card */
+        box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
+        border-radius: 16px;
+    }
+
+    &-acuario {
+        display: flex;
+        flex-direction: column;
+        /* Color Corporativo/Neutro Blanco */
+        background: #FFFFFF;
+        /* Card */
+        box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
+        border-radius: 16px;
+    }
+
+    &-heart {
+        display: flex;
+        flex-direction: column;
+        /* Color Corporativo/Neutro Blanco */
+        background: #FFFFFF;
+        /* Card */
+        box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
+        border-radius: 16px;
+    }
+
+
+    &-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        position: absolute;
+        width: 176px;
+        height: 40px;
+        left: 96px;
+        top: 456px;
+        /* Color Corporativo/Light/Aqua/40 */
+        background: #1CB0A1;
+        box-shadow: 0px 4px 2px rgba(28, 176, 161, 0.2);
+        border-radius: 85px;
+        border: none;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 24px;
+        color: #E9FBFA;;
+    }
 
 
 }

@@ -1,4 +1,100 @@
-// .container-button {
+
+.doctor {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+    &-container {
+        width: 344px;
+        height: 493px;
+        left: 16px;
+        top: 96px;
+        /* Color Corporativo/Neutro Dark/Light/Azul/98 */
+        background: #F7F8FC;
+        /* Card */
+        box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
+        border-radius: 28px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &-class {
+        width: 230px;
+        height: 32px;
+        left: 73px;
+        top: 344px;
+        /* Glub/Poppins/SUBTITLEB/20px Bold HL28 */
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 28px;
+        /* or 140% */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        /* Color Corporativo/Neutro Dark/Light/Azul/20 */
+        color: #19204D;
+    }
+
+    &-text {
+        width: 253px;
+        height: 44px;
+        left: 61px;
+        top: 401px;
+        /* Glub/Poppins/BODY/16px Regular HL24 */
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+        /* or 125% */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        /* Color Corporativo/Neutro Dark/Azul */
+        color: #263073;
+    }
+
+    &-buttonSend {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 256px;
+        height: 48px;
+        left: 60px;
+        top: 485px;
+        margin: 50px;
+        /* Color Corporativo/Principal/Acento */
+        background: #FF8878;
+        box-shadow: 0px 4px 2px rgba(204, 24, 0, 0.15);
+        border-radius: 85px;
+        border: none;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 24px;
+        color: #FFF6F5;
+    }
+
+}
+
+
+
+
+
+
 //     height: 100vh;
 //     display: flex;
 //     flex-direction: column;
@@ -9,16 +105,7 @@
 // }
 
 // .conta {
-//     display: flex;
-//     flex-direction: column;
-//     width: 344px;
-//     height: 493px;
-//     background: #F7F8FC;
-//     border-radius: 28px;
-//     justify-content: center;
-//     align-content: center;
-//     flex-wrap: wrap;
-//     align-items: center;
+//    
 
 // }
 
