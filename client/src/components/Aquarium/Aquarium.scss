@@ -19,14 +19,52 @@
 }
 
 .container-login {
-    display: flex;
-    flex-direction: column;
+    background: linear-gradient(270deg, #51E3D4 0%, #0081C6 100%);
+    border-radius: 20px;
     width: 344px;
-    height: 493px;
-    background: #F7F8FC;
-    border-radius: 28px;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-    align-items: center;
+    height: 383px;   
 }
+.class-div {
+   
+    width: 230px;
+    height: 32px;
+    left: 73px;
+    top: 344px;
+}
+
+.div-text {
+   
+    width: 253px;
+    height: 44px;
+    left: 61px;
+    top: 401px;
+    margin: 15px;
+}
+.button-add {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 256px;
+    height: 48px;
+    left: 60px;
+    top: 485px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 15px;
+    /* identical to box height, or 150% */
+    width: 213px;
+    height: 24px; 
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    /* Color Corporativo/Light/Coral/98 */
+    color: #FFF6F5;
+
+}
+

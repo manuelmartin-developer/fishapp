@@ -12,6 +12,7 @@ import DrCard from "../DrCard";
 const Main = () => {
   return (
     <main className="main">
+      
         <Switch>
           <Route path="/" component={Home} exact/>
           <Route path="/camera" component={Camera}/>
@@ -22,6 +23,7 @@ const Main = () => {
           <Route path="/expertcontact" component={DrCard}/>
         </Switch>
     </main>
+
   );
 };
 
