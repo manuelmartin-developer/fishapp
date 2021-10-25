@@ -5,17 +5,12 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import Home from "@mui/icons-material/Home";
 import Camera from "@mui/icons-material/Camera";
 import SetMeal from "@mui/icons-material/SetMeal";
-import Aquarium from "../Aquarium"; 
+import Aquarium from "../Aquarium"
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import ScienceIcon from "@mui/icons-material/Science";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-import { SvgIcon } from '@mui/material';
 
-import { ReactComponent as Pecera } from "../../assets/Nav/pecera.svg";
-import { ReactComponent as BotonCentral } from "../../assets/Nav/boton.svg";
-
- 
 import "./Nav.scss";
 
 const Nav = () => {
@@ -49,7 +44,7 @@ const Nav = () => {
           label="Home"
           component={Link}
           to="/"
-          icon={<SvgIcon component={BotonCentral} viewBox="0 0 600 0"  />} 
+          icon={<Home />}
         />
 
     
@@ -58,15 +53,15 @@ const Nav = () => {
           label="Acuario"
           component={Link}
           to="/aquarium"
-          icon={<SvgIcon component={Pecera}  />}  
+          icon={<SetMeal />}
         />
     
         <BottomNavigationAction
-          sx={{ paddingLeft: 2, paddingRight: 1}} 
+          sx={{ paddingLeft: 1, paddingRight: 1}}
           label="Identificar"
           component={Link}
           to="/camera"
-          icon={<SvgIcon component={BotonCentral}  />} 
+          icon={<Camera />}
         />
         <BottomNavigationAction
           sx={{ paddingLeft: 1, paddingRight: 1 }}

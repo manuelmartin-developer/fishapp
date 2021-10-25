@@ -1,13 +1,14 @@
 import React from "react";
 import Nav from '../Nav';
+import Header from '../Header'
 const Home = () => {
 
 
   return (
     <>
     <section className="home">
-      <p>home</p>
     </section>
+    <Header/>
     <Nav />
     </>
   );

@@ -12,6 +12,8 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
+
+
 const Diagnosis = () => {
   const email = localStorage.getItem("email");
   const [isLogged, setIslogged] = useState(false);

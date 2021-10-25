@@ -9,6 +9,19 @@
 // }
 
 // .confirmation-buttons button {
+.confirmation-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px;
+    width: 292px;
+    
+}
+
+
+.confirmation-buttons button {
   
 //     width: 120px;
 //     height: 40px;
@@ -22,6 +35,12 @@
 //     border: none;
 //     color: white;
 // }
+}
+.yes-button {
+    background-color: #FF7866;
+    border: none;
+    color: white;
+}
 
 // .no-button {
 //     background-color: white;
@@ -123,3 +142,17 @@
 //     }
 //   }
   
+.confirmation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #FFFFFF;
+  width: 292px;
+  height: 176px;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
+  border-radius: 16px;
+  justify-content: center;
+}
+

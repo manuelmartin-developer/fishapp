@@ -18,3 +18,15 @@
     flex-direction: column;
 }
 
+.container-login {
+    display: flex;
+    flex-direction: column;
+    width: 344px;
+    height: 493px;
+    background: #F7F8FC;
+    border-radius: 28px;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}

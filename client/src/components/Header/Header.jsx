@@ -1,7 +1,12 @@
 import React from "react";
 
+import "./Header.scss"
+
+
 const Header = () => {
-  return <div>Header</div>;
+  return <div>
+    <img src="assets/Header/cabeceraconlogo.png" alt="" />
+  </div>;
 };
 
 export default Header;
