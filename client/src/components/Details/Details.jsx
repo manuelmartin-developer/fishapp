@@ -11,7 +11,7 @@ const Details = () => {
   
   const { fishName, setFishName } = useContext(fishContext);
   const { photo, setPhoto } = useContext(photoContext);
-  const [details, setDetails] = useState([]);
+  const { details, setDetails } = useContext(fishContext);
   const isLogged = localStorage.getItem("isLogged");
   const email = localStorage.getItem("email");
   const history = useHistory();
@@ -44,13 +44,14 @@ const Details = () => {
 
   const close = () => {
     Toast.fire({
-      title: "¿Deseas salir sin guardar?",
+      title: "¿Deseas salir sin guardar cambios?",
       text: "Si sale, no se guardarán los cambios realizados",
       confirmButtonText: "SI",
     }).then((result) => {
       if (result.isConfirmed) {
         setPhoto("");
         setFishName("");
+        setDetails("");
         history.push("/");
       }
     });
