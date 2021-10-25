@@ -11,6 +11,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import Header from "../Header/Header";
 
 
 
@@ -26,6 +27,7 @@ const Diagnosis = () => {
   const [diseases, setDiseases] = useState([]);
   const [disease, setDisease] = useState("");
   const [diseaseDescription, setDiseaseDescription] = useState("");
+
 
   const askExpert = () => {
     if (!isLogged) {
@@ -166,6 +168,8 @@ const Diagnosis = () => {
   }, [fishLatinName]);
 
   const card = (
+
+
     <React.Fragment>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -195,6 +199,9 @@ const Diagnosis = () => {
 
   return (
     <section className="diagnosis">
+
+      <Header/>
+
       {!goToForm ? (
         <>
           <img
