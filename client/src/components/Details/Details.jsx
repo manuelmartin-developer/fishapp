@@ -45,7 +45,8 @@ const Details = () => {
   const close = () => {
     Toast.fire({
       title: "¿Deseas salir sin guardar?",
-      text: "Si sale, no se guardarán los cambios realizados"
+      text: "Si sale, no se guardarán los cambios realizados",
+      confirmButtonText: "SI",
     }).then((result) => {
       if (result.isConfirmed) {
         setPhoto("");

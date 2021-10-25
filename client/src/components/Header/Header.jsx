@@ -4,7 +4,7 @@ import "./Header.scss"
 
 
 const Header = () => {
-  return <div>
+  return <div className="header">
     <img src="assets/Header/cabeceraconlogo.png" alt="" />
   </div>;
 };
