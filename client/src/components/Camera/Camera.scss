@@ -2,83 +2,125 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100vh;
+  background-color: white;
+  overflow: hidden;
+
   &-webcam {
-    height: 100vh;
-    padding: 0 15px;
-    z-index: 9;
+
+    padding: 25px;
+    border-radius: 38px;
+
     background-color: white;
   }
   &-capture-icon {
     width: 80px !important;
     height: 80px !important;
     background-color: white;
-    border-radius: 40px;
+    border-radius: 38px;
     display: flex;
     position: absolute;
     justify-content: center;
     align-items: center;
-    bottom: 80px;
+    bottom: 30px;
     z-index: 9;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    &__icon{
-        width: 66px !important;
-        height: 66px !important; 
-        background-color: white;
-        border-radius: 40px;
-        border: none;
+    &__icon {
+      width: 66px !important;
+      height: 66px !important;
+      background-color: white;
+      border-radius: 40px;
+      border: none;
     }
   }
-  &-capture {
-    margin-top: 80px;
-    display: flex;
-    justify-content: center;
+  &-result {
 
-    & > img {
-      // width: 224px;
-      // height: 224px;
-      // border-radius: 50%;
-      // object-fit: scale-down;
-      // box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+    padding: 15px;
+    
+    &-img {
+        border-radius: 28px;
+        height: auto;
+        object-fit: scale-down;
     }
   }
 
   &-close {
-
     position: absolute;
-    top: 80px;
-    left: 20px;
-    z-index: 9;
-    &-icon{
-        background-color: transparent;
-        border: none;
-        color: #51E3D4;
-        outline: none;
-        
+    top: 50px;
+    left: 15px;
+    &-icon {
+      background-color: transparent;
+      border: none;
+      color: #51e3d4;
+      outline: none;
     }
-}
-
-&-switch{
+  }
+  &-refresh {
     position: absolute;
-    bottom: 70px;
-    right: 50px;
-    width: 26px;
+    top: 50px;
+    right: 15px;
     z-index: 9;
-    &-icon{
-        background-color: transparent;
-        border: none;
-        color: #263073;
-        outline: none;
-        
+    &-icon {
+      background-color: transparent;
+      border: none;
+      color: #51e3d4;
+      outline: none;
     }
-      
+  }
+
+  &-switch {
+    position: absolute;
+    bottom: 26px;
+    right: 60px;
+    
+
+    &-icon {
+      background-color: transparent;
+      border: none;
+      color: #263073;
+      outline: none;
+    }
   }
 
   &-fishname {
-    display: flex;
-    justify-content: center;
-    margin-top: 250px;
+    z-index: 9;
+    position: absolute;
+    top: 180px;
+    
+    & > a{
+        text-decoration: none;
+    }
+    &-button{
+
+        background: #FFFFFF;
+        width: 240px;
+        height: 56px;
+        padding: 10px;
+        box-shadow: 0px 4px 2px rgba(28, 176, 161, 0.2);
+        // border-radius: 0px 16px 16px 0px;
+        border-radius: 16px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 24px;
+        text-transform: uppercase;
+        color: #263073;
+        &__icon{
+            position: relative;
+            top: -40px;
+            left: 200px;
+            color: #1CB0A1;
+            z-index: 9;
+        }
+    }
   }
 
   &-no-identify {

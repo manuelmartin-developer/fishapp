@@ -11,3 +11,9 @@
 @import "../components/Form/Form.scss";
 @import "../components/SplashScreen/SplashScreen.scss";
 @import "../components/Diagnosis/Diagnosis.scss";
+
+// Fonts
+@font-face {
+    font-family: "Poppins";
+    src: local("Poppins"), url(../fonts/Poppins-Medium.ttf) format("truetype");
+  }

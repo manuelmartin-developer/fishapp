@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Nav from './components/Nav';
 import Main from './components/Main/Main';
 import './styles/styles.scss';
 import { fishContext } from './contexts/fishContext';
@@ -50,7 +49,6 @@ function App() {
         <Main />
       </fishContext.Provider>
     </photoContext.Provider>
-        <Nav />
     </BrowserRouter>
     
     

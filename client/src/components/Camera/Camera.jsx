@@ -4,6 +4,8 @@ import Webcam from "react-webcam";
 import CircularProgress from "@mui/material/CircularProgress";
 import CameraIcon from "@mui/icons-material/Camera";
 import IconButton from "@mui/material/IconButton";
+import RefreshIcon from '@mui/icons-material/Refresh';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CloseIcon from "@mui/icons-material/Close";
 import FlipCameraIosOutlinedIcon from "@mui/icons-material/FlipCameraIosOutlined";
 import { Toast } from "../../hooks/useToast";
@@ -21,16 +23,18 @@ const Camera = () => {
   const photoTips = localStorage.getItem("photoTips");
 
   const [facingMode, setFacingMode] = useState("user");
+  // !Cambiar en producción
+  // const [facingMode, setFacingMode] = useState({exact: 'environment'});
   const videoConstraints = {
-    width: 896,
-    height: 1568,
+    width: 360,
+    height: 500,
     facingMode: facingMode
   };
 
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot({
-      width: 224,
-      height: 224,
+      // width: 224,
+      // height: 224,
     });
     setPhoto(imageSrc);
 
@@ -116,18 +120,16 @@ const Camera = () => {
     // return () => setFishName("")
   }, [photo]);
 
-  console.log(facingMode);
   return (
-    <section className="camera">
+    <>
       {!photo ? (
-        <>
+        <section className="camera">
           <Webcam
             className="camera-webcam"
             audio={false}
             mirrored={true}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
-            width={"100%"}
             videoConstraints={videoConstraints}
             screenshotQuality={1}
           />
@@ -138,7 +140,7 @@ const Camera = () => {
           </div>
           <div className="camera-switch">
             <button className="camera-switch-icon" >
-              <FlipCameraIosOutlinedIcon className="camera-close-icon__icon" onClick={() => switchCamera()} />
+              <FlipCameraIosOutlinedIcon sx={{ fontSize: 30 }} className="camera-close-icon__icon" onClick={() => switchCamera()} />
             </button>
           </div>
           <div className="camera-capture-icon">
@@ -149,36 +151,43 @@ const Camera = () => {
               <img src="assets/Camera/burbuja.svg" alt="" />
             </button>
           </div>
-        </>
+        </section>
       ) : (
         <>
           {fishName ? (
-            <>
+            <section className="camera">
               <div className="camera-fishname">
-                <h1>{fishName}</h1>
                 <Link to="/details">
-                  <button>Ir a detalles</button>
+                  <button className="camera-fishname-button">{fishName}</button>
+                  <ArrowForwardIosIcon className="camera-fishname-button__icon" />
                 </Link>
               </div>
-              <div className="camera-capture">
-                <img src={photo} alt="cam_capture" />
+              <div className="camera-result">
+                <img className="camera-result-img" src={photo} alt="cam_capture" />
               </div>
               <div className="camera-close">
                 <button className="camera-close-icon" onClick={() => close()}>
                   <CloseIcon className="camera-close-icon__icon" />
                 </button>
               </div>
-            </>
+              <div className="camera-refresh">
+                <button className="camera-refresh-icon" onClick={() => reset()}>
+                  <RefreshIcon className="camera-refresh-icon__icon" />
+                </button>
+              </div>
+            </section>
           ) : (
+            <section className="camera">
             <div className="camera-no-identify">
               <h1>No identificado</h1>
               <button onClick={() => reset()}>Volver a tomar foto</button>
               <button onClick={() => gotoSearch()}>Buscar por nombre</button>
             </div>
+            </section>
           )}
         </>
       )}
-    </section>
+    </>
   );
 };
 

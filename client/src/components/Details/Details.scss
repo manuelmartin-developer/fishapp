@@ -1,6 +1,197 @@
-.details{
-    margin-top: 120px;
+.details {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 15px;
+  overflow: hidden;
+
+  &-fishname {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    color: #23dcc9;
+    margin-bottom: 15px;
+  }
+
+  &-photo {
+    & > img {
+      border-radius: 38px;
+      height: 230px;
+    }
+  }
+
+  &-title {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 28px;
+    color: #8c96d9;
+
+    & > img {
+      height: 24px;
+      width: 24px;
+      margin-right: 10px;
+    }
+  }
+
+  &-description {
+    width: 100%;
+    border-radius: 28px;
+    background-color: #F7F8FC;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding: 20px;
+    box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    & > p {  
+        margin: 2px 0;
+    }
+    &-bold{
+        font-weight: bold;
+    }
+}
+
+&-scroll{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100% !important;
+    height: 200px;
+    padding: 5px;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    &-data{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center !important;
+        width: 150px !important;
+        height: 150px !important;
+        white-space: pre; 
+        border-radius: 28px;
+        background-color: #F7F8FC;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        margin-left: 20px;
+
+        &-images{
+
+          &-vertical{
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            z-index: 9;
+            position: relative;
+            top: -35px;
+            height: 0px;
+          }
+          &-horizontal {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0;
+            z-index: 9;
+            position: relative;
+            top: -35px;
+            height: 0px;
+
+          }
+          &-title{
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 20px;
+            color: #1CB0A1;
+            
+          }
+        }
+        &>p{
+          padding: 0 20px;
+        }
+
+      }
+  }
+}
+#img{
+
+  &-ph{
+   width: 33px;
+   z-index: 9;
+   position: relative;
+   top: -45px;
+   
+  }
+  
+  &-agua{
+    position: relative;
+    top: -60px;
+    width: 56px;
+    
+  }
+  &-meter{
+    height: 60px;
+    z-index: 9;
+    position: relative;
+    top: -15px;
+  }
+  &-fish{
+    width: 58px;
+    position: relative;
+    top: -17px ;
+  }
+  &-life{
+    width: 80px;
+    position: relative;
+    top: -12px ;
+  }
+  &-dureza{
+    width: 80px;
+    position: relative;
+    top: -25px ;
+  }
+  &-temperatura{
+    width: 80px;
+    position: relative;
+    top: -25px ;
+  }
+  &-espacio{
+    width: 80px;
+    position: relative;
+    top: -25px ;
+  }
+  &-temperamento{
+    width: 80px;
+    position: relative;
+    top: -25px ;
+  }
 }
