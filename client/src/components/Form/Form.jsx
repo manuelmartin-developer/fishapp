@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { app } from "../../firebase";
 import { Link, useHistory } from "react-router-dom";
 import Header from '../Header/Header'
+import TextField from '@mui/material/TextField';
 
 /* import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; */
@@ -71,20 +72,28 @@ const Form = () => {
   }
 
   return (
-    <div>
-      <Header/>
-    <div className="container-form">
-    
-      <form className="form" onSubmit={handleSubmit}>
-          <input id="outlined-basic" label="nombre del pez" variant="outlined" placeholder="nombre" {...register("name", { required: true, minlenght: 3 } )} className="input-value" type="text" name="name"  />
-          <input id="outlined-basic" label="edad del pez" variant="outlined" placeholder="edad" {...register("age", { required: true, minlenght: 3 } )} className="input-value" type="age" name="age"  />
-          <input id="date" type="date"  {...register("adopt", { required: true, minlenght: 3 } )} className="input-value" name="adopt"   />
-          <input id="outlined-basic" variant="outlined" type="file" onChange={handleChange}  />
-          <button>GUARDAR</button>
-      </form>
 
-      </div>
+    <section className="form">
+
+    <div className="form-image">
+      <img src="" alt="" />
     </div>
+      
+    <div className="form-container">    
+      <form className="form-form" onSubmit={handleSubmit}>
+          <p className="form-title">Añadir pez a mi acuario</p>
+          <TextField  helperText="*campo obligatorio" className="form-input"id="outlined-basic" label="nombre del pez" variant="outlined" placeholder="nombre" {...register("name", { required: true, minlenght: 3 } )} className="input-value" type="text" name="name"  />
+          <TextField  helperText="*campo obligatorio"className="form-input"id="outlined-basic" label="edad del pez" variant="outlined" placeholder="edad" {...register("age", { required: true, minlenght: 3 } )} className="input-value" type="age" name="age"  />
+          <TextField helperText="*campo obligatorio" className="form-input"id="date" type="date"  {...register("adopt", { required: true, minlenght: 3 } )} className="input-value" name="adopt"   />
+          <input className="form-input"id="outlined-basic" variant="outlined" type="file" onChange={handleChange}  />
+          <button className="form-buttonSave">GUARDAR</button>
+          <button className="form-buttonAdd">AÑADIR OTRO</button>
+      </form>
+    </div>
+
+
+
+    </section>
   );
   
 };

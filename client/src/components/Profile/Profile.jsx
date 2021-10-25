@@ -28,15 +28,16 @@ export const Profile = () => {
     <div className="profile">
     {isAuthenticated && (
       <>
-      <div className="profile-image">
-        <p>{user.url}</p>
-      </div>
-      <div className="profile-name">
-        <p>{user.name}</p>
-      </div>
-      
-      <div className="profile-email">
-        <p>{user.email}</p>
+      <div className="profile-data">
+        <div className="profile-image">
+          <p>{user.url}</p>
+        </div>
+        <div className="profile-name">
+          <p>{user.name}</p>
+        </div>
+        <div className="profile-email">
+          <p>{user.email}</p>
+        </div>
       </div>
 
       <div className="profile-atributes">

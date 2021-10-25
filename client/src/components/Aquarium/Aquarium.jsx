@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react'; 
 import Login from "../../components/Login/Login"; 
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
 
 
 import Form from "../Form/Form";
@@ -8,6 +9,7 @@ import Form from "../Form/Form";
 import { app } from "../../firebase";
 
 import "./Aquarium.scss"
+
 
 
 function Aquarium() {
@@ -48,9 +50,12 @@ function Aquarium() {
  
   return (
   
-    <section className="aquarium">
+    <section >
 
-    
+    <HeaderLogo/>
+
+    <div className="aquarium">
+
     {files.length === 0 ? (
       <>
       <div className="aquarium-conta">
@@ -90,6 +95,7 @@ function Aquarium() {
 
   }
 
+    </div>
    
     </section>
   )
