@@ -1,0 +1,37 @@
+.doctor-container {
+    display: flex;
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.container-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-field {
+    width: 327px;
+    height: 202.5px;
+}
+
+.yes-button {
+    background-color: #FF7866;
+    border: none;
+    color: white;
+    width: 120px;
+    height: 40px;
+    border-radius: 85px;
+    padding: 16px;
+}
+
+.cancelar-button {
+    background-color: #FF7866;
+    border: none;
+    color: white;
+    width: 120px;
+    height: 40px;
+    border-radius: 85px;
+    padding: 16px;
+}

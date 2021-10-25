@@ -9,12 +9,14 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 const Details = () => {
+  
   const { fishName, setFishName } = useContext(fishContext);
   const { photo, setPhoto } = useContext(photoContext);
   const [details, setDetails] = useState([]);
   const isLogged = localStorage.getItem("isLogged");
   const email = localStorage.getItem("email");
   const history = useHistory();
+
 
   const addMyAquarium = async () => {
     if (isLogged) {
@@ -55,7 +57,6 @@ const Details = () => {
 
   useEffect(() => {
     const payload = { name: fishName };
-
     const options = {
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +70,6 @@ const Details = () => {
           payload,
           options
         );
-
         setDetails(response.data[0]);
       } catch (error) {
         console.log(error);
@@ -192,5 +192,4 @@ const Details = () => {
     </section>
   );
 };
-
 export default Details;
