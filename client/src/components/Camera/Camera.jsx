@@ -12,8 +12,6 @@ import { Toast } from "../../hooks/useToast";
 import { fishContext } from "../../contexts/fishContext";
 import { photoContext } from "../../contexts/photoContext";
 import axios from "axios";
-import { switchClasses } from "@mui/material";
-import Modal from 'rsuite/Modal';
 
 const Camera = () => {
   const webcamRef = useRef(null);
@@ -23,9 +21,6 @@ const Camera = () => {
   const { photo, setPhoto } = useContext(photoContext);
   const photoTips = localStorage.getItem("photoTips");
   const fishNameImg = fishName.toLowerCase().replace(/ /g, "");
-
-
-
 
   const [facingMode, setFacingMode] = useState("user");
   // !Cambiar en producción
@@ -83,6 +78,9 @@ const Camera = () => {
       facingMode === "user" ? setFacingMode({exact: 'environment'}) : setFacingMode("user")
   };
 
+
+
+
   const reset = () => {
     setPhoto("");
   };
@@ -136,7 +134,7 @@ const Camera = () => {
             screenshotQuality={1}
           />
           <div className="camera-close">
-            <button className="camera-close-icon" onClick={() => close()}> {/* Boton para activar la lógica de close */}
+            <button className="camera-close-icon" onClick={() => close()}>
               <CloseIcon className="camera-close-icon__icon" />
             </button>
           </div>
@@ -166,7 +164,7 @@ const Camera = () => {
                 <div className="camera-fishname-img">
                   <img src={`assets/Details/${fishNameImg}.jpg`} alt="fish_photo" />
                 </div>
-              </div>
+              </div> 
               <div className="camera-result">
                 <img className="camera-result-img" src={photo} alt="cam_capture" />
               </div>
