@@ -10,6 +10,8 @@ import Onboarding from './components/Onboarding';
 function App() {
 
   const [fishName, setFishName] = useState("");
+  const [details, setDetails] = useState(null);
+
   const [photo, setPhoto] = useState("");
   const [loading, setLoading] = useState(true);
   const onboarding = localStorage.getItem("onboarding");
@@ -25,7 +27,9 @@ function App() {
 
   const fishData = {
     fishName: fishName,
-    setFishName: setFishName
+    setFishName: setFishName,
+    details: details,
+    setDetails: setDetails
   };
   const photoData = {
     photo: photo,

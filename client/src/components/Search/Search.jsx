@@ -3,12 +3,15 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { fishContext } from "../../contexts/fishContext";
 
 const Search = () => {
 
-  const [fishName, setFishName ] = useState("");
+  const {fishName, setFishName } = useContext(fishContext);
   const [fishesNames, setFisheshName] = useState([]);
-  const [details, setDetails] = useState([]);
+  const { details, setDetails } = useContext(fishContext);
+  const history = useHistory();
 
   const handleInputChange = (event, value) => {
       
@@ -69,15 +72,14 @@ const Search = () => {
       })();
     }
 
-    
-  }, [fishName]);
+  }, [fishName, setDetails]);
   
 
   return (
     <>
     <div className="search">
-      <Stack spacing={2} sx={{ width: 300 }}>
-      <Autocomplete
+      <Stack className="search-stack" spacing={2} sx={{ width: 344}}>
+      <Autocomplete  
           freeSolo
           id="free-solo-2-demo"
           disableClearable
@@ -86,7 +88,7 @@ const Search = () => {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Busca un pez"
+              label="Buscar pez"
               InputProps={{
                 ...params.InputProps,
                 type: 'search',
@@ -95,17 +97,7 @@ const Search = () => {
           )}
         />
         </Stack>
-    </div>
-     {fishName ?
-    <div className="details">
-         <p>{details.nombre}</p>     
-         <p>{details.latin}</p>     
-    </div>
-    :
-    <div className="details">
-         
-    </div>
-     }         
+    </div>        
     </>
   );
 };

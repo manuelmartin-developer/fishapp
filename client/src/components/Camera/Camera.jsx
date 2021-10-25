@@ -12,6 +12,7 @@ import { Toast } from "../../hooks/useToast";
 import { fishContext } from "../../contexts/fishContext";
 import { photoContext } from "../../contexts/photoContext";
 import axios from "axios";
+import Nav from '../Nav';
 
 const Camera = () => {
   const webcamRef = useRef(null);
@@ -38,7 +39,7 @@ const Camera = () => {
     });
     setPhoto(imageSrc);
 
-    setFishName("guppy");
+    // setFishName("guppy");
 
     const payload = { data: photo };
 
@@ -180,13 +181,16 @@ const Camera = () => {
               </div>
             </section>
           ) : (
+            <>
             <section className="camera">
             <div className="camera-no-identify">
-              <h1>No identificado</h1>
-              <button onClick={() => reset()}>Volver a tomar foto</button>
-              <button onClick={() => gotoSearch()}>Buscar por nombre</button>
+              <img className="camera-no-identify-background" src="assets/Camera/no_identify.png" alt="background" />
+              <button className="camera-no-identify-button" onClick={() => reset()}>Volver a tomar foto</button>
+              <button className="camera-no-identify-button" onClick={() => history.push("/")}>Buscar por nombre</button>
             </div>
             </section>
+            <Nav />
+            </>
           )}
         </>
       )}

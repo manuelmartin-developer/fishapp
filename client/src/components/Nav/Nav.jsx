@@ -5,6 +5,8 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import Home from "@mui/icons-material/Home";
 import Camera from "@mui/icons-material/Camera";
 import SetMeal from "@mui/icons-material/SetMeal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faStethoscope, faVial } from '@fortawesome/free-solid-svg-icons';
 import Aquarium from "../Aquarium"
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import ScienceIcon from "@mui/icons-material/Science";
@@ -18,18 +20,7 @@ const Nav = () => {
 
 
   return (
-    <Paper
-      sx={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        justifyContent: "center",
-        paddingRight:2,
-        paddingLeft: 2
-      }}
-      elevation={3}
-    >
+  
       
       <BottomNavigation
         sx={{ width: "100%", }}
@@ -44,7 +35,7 @@ const Nav = () => {
           label="Home"
           component={Link}
           to="/"
-          icon={<Home />}
+          icon={<img src="assets/Nav/home.svg" alt="nav_home"/>}
         />
 
     
@@ -53,32 +44,32 @@ const Nav = () => {
           label="Acuario"
           component={Link}
           to="/aquarium"
-          icon={<SetMeal />}
+          icon={<img src="assets/Nav/aquarium.svg" alt="nav_aquarium"/>}
         />
     
         <BottomNavigationAction
-          sx={{ paddingLeft: 1, paddingRight: 1}}
+          sx={{ paddingLeft: 1, paddingRight: 1, height:20}}
           label="Identificar"
           component={Link}
           to="/camera"
-          icon={<Camera />}
+          icon={<img src="assets/Nav/central.png" alt="nav_identify"/>}
         />
         <BottomNavigationAction
           sx={{ paddingLeft: 1, paddingRight: 1 }}
           label="Diagnóstico"
           component={Link}
           to="/diagnosis"
-          icon={<ScienceIcon />}
+          icon={<img src="assets/Nav/diagnosis.svg" alt="nav_diagnosis"/>}
         />
         <BottomNavigationAction
           sx={{ paddingLeft: 1, paddingRight: 1 }}
           label="Experto"
           component={Link}
           to="/expert"
-          icon={<LocalHospitalIcon />}
+          icon={<img src="assets/Nav/expert.svg" alt="nav_expert"/> }
         />
       </BottomNavigation>
-    </Paper>
+
   );
 };
 
