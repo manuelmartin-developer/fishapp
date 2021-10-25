@@ -7,6 +7,7 @@ import { Logout } from '../Logout/Logout'
 import Form from "../Form/Form";
 import Camera from "../Camera/Camera"
 import DrCam from "../DrCam/DrCam"
+import { app } from "../../firebase";
 
 import "./Aquarium.scss"
 import FamilyBook from "../familyBook/familyBook";
@@ -18,22 +19,42 @@ function Aquarium() {
   const [ aquarium, setNewAquarium ] = useState(false)
 
   const [show, setShow] = useState(false); 
-
-  const [showForm, setShowForm] = useState(false); 
+  const [files, setFiles] = useState([]);
+  const [viewForm, setviewForm] = useState(false) 
+  const email = localStorage.getItem("email");
 
   const start = () => {
     setNewAquarium(true)
   }
+  const showForm = () => {
+    setviewForm(true)
+  }
 
+  useEffect(() => {
+    if(email) {
 
+      (async () => {
+        const filesList =  
+          await app
+          .firestore()
+          .collection("images")
+          .where("email", "==", email)
+          .get(); //Firebase nos da un objeto  
+          setFiles(filesList.docs.map((doc) => doc.data()));
+      })()
+    }
+  }, [email]);
+  console.log(files)
+
+ 
   return (
     <section className="aquarium">
-    {!aquarium ? (
+    {files.length === 0 ? (
       <>
       <div className="conta">
           <img src="assets/Aquarium/Pecera.png" height="160px" alt="" className="pecera"/>
           <div className="class-div">
-            <h3>Aún no has agregado preces a tu acuario</h3>
+            <h3>Aún no has agregado peces a tu acuario</h3>
           </div>
           <div className="div-text">
             <p>¡Saca una foto a tu pez y que empiece la aventura!</p>
@@ -42,37 +63,27 @@ function Aquarium() {
       </div>
       </>
 
+    ) : !viewForm ? (
+
+      <div className="gallery">
+          {files.map((file, index) => ( /* Pinta los datos de la data base, almacenados denteo del estado files. */
+            <div className="gallery-element" key={index}>
+              <div className="container-image">
+                <img className="style-img" src={file.url} alt="" /> 
+                <h3>{file.name}</h3>
+              </div>
+            </div>
+          ))}
+          <div className="add-full-container">
+            <div className="add-container">
+              <img src="assets/Form/peceraNaranja.png" />
+                <button onClick={() => {showForm()}}>AÑADIR OTRO</button>
+            </div>
+          </div>
+      </div>
+
     ) : (
-
-      <DrCam/>,
-      <div className="nav">
-            
-              <ul className="nav_links">
-              </ul>
-                <div className="container-menu">
-                  {isAuthenticated ? <>
-                    <Logout/>
-                    <Form/>
-                   {/*  <Profile/> */}
-                    {/* <Camera/> */}
-                   {/*  {!showForm ? (
-                    <FamilyBook/>  ) :(
-                    <Form/>)} */}
-                    </>
-                    :
-                    <>
-                    <div className="container-login">
-                      <p>Para registrar a tu pez, necesitas estar registrado</p>
-                    <Login/>
-                    </div>
-                    </>
-                      }
-                      
-                </div>
-                <div>
-                </div>
-        </div>
-
+      <Form />
     )
 
   }

@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { fishContext } from "../../contexts/fishContext";
 import { photoContext } from "../../contexts/photoContext";
 import { Mixin, Toast } from "../../hooks/useToast";
-import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import { app } from "../../firebase";
 import axios from "axios";
@@ -16,7 +15,7 @@ const Details = () => {
   const isLogged = localStorage.getItem("isLogged");
   const email = localStorage.getItem("email");
   const history = useHistory();
-  const fishNameImage = fishName.toLowerCase().replace(/ /g,""); 
+  const fishNameImg = fishName.toLowerCase().replace(/ /g, "");
 
 
   const addMyAquarium = async () => {
@@ -45,8 +44,9 @@ const Details = () => {
 
   const close = () => {
     Toast.fire({
-      icon: "info",
-      title: "Deseas salir sin guardar?",
+      title: "¿Deseas salir sin guardar?",
+      text: "Si sale, no se guardarán los cambios realizados",
+      confirmButtonText: "SI",
     }).then((result) => {
       if (result.isConfirmed) {
         setPhoto("");
@@ -89,7 +89,7 @@ const Details = () => {
       </div>
       <div className="details-fishname">{fishName}</div>
       <div className="details-photo">
-        <img src={`assets/Details/${fishNameImage}.jpg`} alt="fish_photo" />
+        <img src={`assets/Details/${fishNameImg}.jpg`} alt="fish_photo" />
       </div>
       <div className="details-title">
         <img src="assets/Details/oval.png" alt="oval_icon" />
@@ -182,14 +182,9 @@ const Details = () => {
         <p className="details-description-bold">Especies incompatibles:</p>
         <p>{details.descripcion}</p>
       </div>
-      <Button
-        onClick={() => {
+      <button className="details-button" onClick={() => {
           addMyAquarium();
-        }}
-        variant="outlined"
-      >
-        Agregar a mi acuario
-      </Button>
+        }}>AÑADIR A MI ACUARIO</button>
     </section>
   );
 };

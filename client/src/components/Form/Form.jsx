@@ -74,27 +74,7 @@ const Form = () => {
     <div>
       <Header/>
     <div className="container-form">
-    {!viewForm ? ( <>
-      <div className="gallery">
-          {files.map((file, index) => ( /* Pinta los datos de la data base, almacenados denteo del estado files. */
-            <div className="gallery-element" key={index}>
-              <div className="container-image">
-                <img className="style-img" src={file.url} alt="" /> 
-                <h3>{file.name}</h3>
-              </div>
-            </div>
-          ))}
-          <div className="add-full-container">
-            <div className="add-container">
-              <img src="assets/Form/peceraNaranja.png" />
-                <button onClick={() => {showForm()}}>AÑADIR OTRO</button>
-            </div>
-          </div>
-      </div>
-    </>
-
-    ) : (
-      <>
+    
       <form className="form" onSubmit={handleSubmit}>
           <input id="outlined-basic" label="nombre del pez" variant="outlined" placeholder="nombre" {...register("name", { required: true, minlenght: 3 } )} className="input-value" type="text" name="name"  />
           <input id="outlined-basic" label="edad del pez" variant="outlined" placeholder="edad" {...register("age", { required: true, minlenght: 3 } )} className="input-value" type="age" name="age"  />
@@ -102,9 +82,6 @@ const Form = () => {
           <input id="outlined-basic" variant="outlined" type="file" onChange={handleChange}  />
           <button>GUARDAR</button>
       </form>
-      </>
-
-    )}
 
       </div>
     </div>

@@ -3,10 +3,6 @@ import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import Camera from '../Camera/Camera';
 import DrCam from '../DrCam/DrCam'
 import Button from '@mui/material/Button'
-import Chatbot from 'react-chatbot-kit';
-import config from '../../chatbot/config';
-import ActionProvider from '../../chatbot/ActionProvider';
-import MessageParser from '../../chatbot/MessageParser'; 
 import './Doctor.scss'
 
 
