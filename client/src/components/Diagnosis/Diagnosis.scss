@@ -64,7 +64,7 @@
         }
     }
 
-    &-buttonAdd {
+    &-searchButton {
 
         display: flex;
         flex-direction: row;
@@ -88,7 +88,22 @@
         color: #FFF6F5;
         /* Glub/Poppins/BOTÓN1/16px Extrabold HL24 */
 
-        
+    }
+    &-checklist {
+        display: flex;
+        flex-direction: column;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        /* identical to box height, or 133% */
+        display: flex;
+        align-items: center;
+        text-align: center;
 
+        /* Color Corporativo/Neutro Dark/Light/Azul/20 */
+
+        color: #19204D;
     }
 }

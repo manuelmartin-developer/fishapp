@@ -219,6 +219,9 @@ const Diagnosis = () => {
       </div>
       </>
       ) : (
+        <div className="diagnosis-checklist">
+          <p className="diagnosis-title">¿Qué síntomas tiene tu pez?</p>
+          <img src="assets/Diagnosis/pezdiagnosis.png" alt="" />
         <Stack spacing={2} sx={{ width: 300 }}>
           <Autocomplete
             freeSolo
@@ -254,7 +257,9 @@ const Diagnosis = () => {
               />
             )}
           />
+          <button className="diagnosis-searchButton">VER DIAGNÓSTICO</button> 
         </Stack>
+        </div>
       )}
       {disease ? (
         <>
