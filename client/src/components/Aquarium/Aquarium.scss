@@ -117,7 +117,7 @@
         }
     }
 
-    &-addButton {
+    &-buttonAdd {
 
         display: flex;
         flex-direction: row;
@@ -125,6 +125,8 @@
         align-items: center;
         left: 60px;
         top: 485px;
+        width: 256px;
+        height: 48px;
         /* Color Corporativo/Principal/Acento */
         background: none;
         border-radius: 85px;
@@ -135,8 +137,11 @@
         font-size: 16px;
         line-height: 24px;
         color: #FFF6F5;
+        background: #FF8878;
+        box-shadow: 0px 4px 2px rgba(204, 24, 0, 0.15);
+        border-radius: 85px;
         /* Glub/Poppins/BOTÓN1/16px Extrabold HL24 */
-
+        margin-top: 50px;
             &-show {
                 background: none;
                 border:none;
