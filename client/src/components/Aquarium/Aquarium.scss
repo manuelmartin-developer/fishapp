@@ -150,8 +150,11 @@
 
 
     .aquarium-containerButton {
-        display: flex;
-        flex-direction: column;
+        position: absolute;
+        top: 480px;
+        left: 250px;
+        text-align: center;
+        border: none;
     }
 
     .aquarium-containerButton-title {

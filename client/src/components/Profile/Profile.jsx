@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-
 import { useAuth0 } from "@auth0/auth0-react";
-import Header from "../Header/Header";
-
 import "./Profile.scss";
 import Nav from "../Nav";
+import Header from "../Header";
 
 export const Profile = () => {
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } = useAuth0();
@@ -28,7 +26,7 @@ export const Profile = () => {
           <>
             <div className="profile-data">
               <div className="profile-image">
-                <p>{user.picture}</p>
+                <img src={user.picture} alt="" />
               </div>
               <div className="profile-name">
                 <p>{user.name}</p>
@@ -38,25 +36,35 @@ export const Profile = () => {
               </div>
             </div>
             <div className="profile-atributes">
-              <div className="profile-pics">
+              <div className="profile-atributes-pics">
                 <img src="assets/Profile/pezcaptura.png" alt="" />
-                <p>3</p>
+                <p>03</p>
               </div>
-              <div className="profile-acuario">
+              <div className="profile-atributes-acuario">
                 <img src="assets/Profile/pecepequeña.png" alt="" />
-                <p>3</p>
+                <p>03</p>
               </div>
-              <div className="profile-heart">
+              <div className="profile-atributes-heart">
                 <img src="assets/Profile/Corazon.png" alt="" />
-                <p>3</p>
+                <p>03</p>
+              </div>
+            </div>
+            <div className="profile-textos">
+              <div className="profile-textos-escaneados">
+                <p>Peces escaneados</p>
+              </div>
+              <div className="profile-textos-acuario">
+                <p>Peces en acuario</p>
+              </div>
+              <div className="profile-textos-favoritos">
+                <p>Peces favoritos</p>
               </div>
             </div>
             <button className="profile-button" onClick={() => logout(
               {isAuthenticated: false, returnTo: window.localStorage.removeItem("email")}
             )}>
-              Logout
+              CERRAR SESIÓN
             </button>
-            ;
           </>
         ) : (
           <>
@@ -64,7 +72,7 @@ export const Profile = () => {
               className="profile-button"
               onClick={() => loginWithRedirect()}
             >
-              Login
+              INICIAR SESIÓN
             </button>
           </>
         )}
