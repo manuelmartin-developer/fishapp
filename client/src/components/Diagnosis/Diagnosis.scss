@@ -1,7 +1,94 @@
-.diagnosis{
-    margin-top: 120px;
+
+.diagnosis {
+ 
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
     align-items: center;
+    justify-content: center;
 
+    &-conta {
+        display: flex;
+        flex-direction: column;
+        width: 344px;
+        height: 493px;
+        background: #F7F8FC;
+        border-radius: 28px;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &-class {
+        width: 230px;
+        height: 32px;
+        left: 73px;
+        top: 344px;
+
+            p {
+                /* Glub/Poppins/SUBTITLEB/20px Bold HL28 */
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 20px;
+                line-height: 28px;
+                /* or 140% */
+                display: flex;
+                align-items: center;
+                text-align: center;
+            }
+
+    }
+
+    &-text {
+        width: 253px;
+        height: 44px;
+        left: 61px;
+        top: 401px;
+        margin: 15px;
+
+        p {
+            /* Glub/Poppins/BODY/16px Regular HL24 */
+        margin: 25px;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+        /* or 125% */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        }
+    }
+
+    &-buttonAdd {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 256px;
+        height: 48px;
+        left: 60px;
+        top: 485px;
+        margin: 50px;
+        /* Color Corporativo/Principal/Acento */
+        background: #FF8878;
+        box-shadow: 0px 4px 2px rgba(204, 24, 0, 0.15);
+        border-radius: 85px;
+        border: none;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 24px;
+        color: #FFF6F5;
+        /* Glub/Poppins/BOTÓN1/16px Extrabold HL24 */
+
+        
+
+    }
 }

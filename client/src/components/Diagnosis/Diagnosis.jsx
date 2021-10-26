@@ -12,6 +12,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Header from "../Header/Header";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
 
 
 
@@ -198,26 +199,25 @@ const Diagnosis = () => {
   );
 
   return (
+
+
     <section className="diagnosis">
 
-      <Header/>
+      <HeaderLogo/>
 
       {!goToForm ? (
-        <>
-          <img
-            src="https://cdn.pixabay.com/photo/2016/04/06/17/42/silhouette-1312359_960_720.png"
-            alt="pez"
-            height="250px"
-          />
-          <Button
-            onClick={() => {
-              seeForm();
-            }}
-            variant="outlined"
-          >
-            Rellenar cuestionario
-          </Button>
-        </>
+       <>
+      <div className="diagnosis-conta">
+          <img src="assets/Diagnosis/peztirita.png" height="160px" alt="" className="pecera"/>
+          <div className="diagnosis-class">
+            <p>¿Tú pez no tiene la apariencia habitual?</p>
+          </div>
+          <div className="diagnosis-text">
+            <p>Rellena este breve cuestionario para saber qué le pasa</p>
+          </div>
+          <button onClick={()=> {seeForm()}} className="diagnosis-buttonAdd">RELLENAR CUESTIONARIO</button>
+      </div>
+      </>
       ) : (
         <Stack spacing={2} sx={{ width: 300 }}>
           <Autocomplete
