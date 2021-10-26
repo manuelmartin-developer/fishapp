@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react'; 
-import { Login }  from '../Login/Login'
-import { Profile } from '../Profile/Profile'
-import Header from '../Header/Header'
-import { Logout } from '../Logout/Logout'
+import Login from "../../components/Login/Login"; 
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
+
+
 import Form from "../Form/Form";
-import Camera from "../Camera/Camera"
-import DrCam from "../DrCam/DrCam"
+
 import { app } from "../../firebase";
 
 import "./Aquarium.scss"
-import FamilyBook from "../familyBook/familyBook";
+
+
 
 function Aquarium() {
 
   const { isAuthenticated } = useAuth0(); 
   
   const [ aquarium, setNewAquarium ] = useState(false)
+
   const [show, setShow] = useState(false); 
   const [files, setFiles] = useState([]);
   const [viewForm, setviewForm] = useState(false) 
@@ -43,22 +44,29 @@ function Aquarium() {
       })()
     }
   }, [email]);
+
   console.log(files)
 
  
   return (
-    <section className="aquarium">
+  
+    <section >
+
+    <HeaderLogo/>
+
+    <div className="aquarium">
+
     {files.length === 0 ? (
       <>
-      <div className="conta">
-          <img src="assets/Aquarium/Pecera.png" height="160px" alt="" />
-          <div className="class-div">
-            <h3>Aún no has agregado peces a tu acuario</h3>
+      <div className="aquarium-conta">
+          <img src="assets/Aquarium/Pecera.png" height="160px" alt="" className="pecera"/>
+          <div className="aquarium-class">
+            <p>Aún no has agregado peces a tu acuario</p>
           </div>
-          <div className="div-text">
+          <div className="aquarium-text">
             <p>¡Saca una foto a tu pez y que empiece la aventura!</p>
           </div>
-          <button onClick={()=> {start()}}>AÑADIR PEZ A MI ACUARIO</button>
+          <button onClick={()=> {start()}} className="aquarium-buttonAdd">AÑADIR PEZ A MI ACUARIO</button>
       </div>
       </>
 
@@ -87,6 +95,7 @@ function Aquarium() {
 
   }
 
+    </div>
    
     </section>
   )

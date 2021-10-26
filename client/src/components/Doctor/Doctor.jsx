@@ -18,19 +18,19 @@ const Doctor = () => {
 
   }
 
-  return <div className="container-button">
+  return <section className="doctor">
   
     {!startConsulta ? (
       <>
-      <div className="conta">
+      <div className="doctor-container">
           <img src="assets/Aquarium/Espacio.png" height="160px" alt="" />
-          <div className="class-div">
+          <div className="doctor-class">
             <h3>¿Tienes dudas sobre tu pez?</h3>
           </div>
-          <div className="div-text">
+          <div className="doctor-text">
             <p>Nuestros especialistas prodrán resolver todas tus dudas</p>
           </div>
-          <button onClick={()=> {start()}}>ENVIAR FOTOCONSULTA</button>
+          <button onClick={()=> {start()}} className="doctor-buttonSend">ENVIAR FOTOCONSULTA</button>
       </div>
       </>
 
@@ -40,7 +40,7 @@ const Doctor = () => {
 
     )
 
-  }  </div>
+  }  </section>
     
 }
 
