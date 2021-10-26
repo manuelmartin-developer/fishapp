@@ -64,6 +64,9 @@ const DrCard = () => {
     setGoToForm(true);
   };
 
+  const backHome = () => {
+    history.push('/')
+  }
   const handleInputChange = (event, value) => {
     setDisease("");
     for (let fish of fishesNames) {
@@ -241,6 +244,7 @@ const DrCard = () => {
             )}
           />
           <Autocomplete
+            label="text-area"
             freeSolo
             id="free-solo-3-demo"
             disableClearable
@@ -257,8 +261,8 @@ const DrCard = () => {
               />
             )}
           />
-          <button className="consulta-searchButton-yes">ACEPTAR</button>
-          <button className="consulta-searchButton-no">CANCELAR</button>
+          <button className="consulta-searchButton">ACEPTAR</button>
+          <button onClick={()=> {backHome()}} className="consulta-searchButton-no">CANCELAR</button>
 
         </Stack>
         </div>

@@ -49,7 +49,7 @@ function Aquarium() {
  
   return (
   
-    <section className>
+    <section >
     <HeaderLogo/>
     <div className="aquarium">
 
@@ -81,9 +81,9 @@ function Aquarium() {
           ))}
           <div className="aquarium-containerButton">
             <div className="aquarium-addButton">
-              <img src="assets/Form/peceraNaranja.png" />
-                <button onClick={() => {showForm()}}>AÑADIR OTRO</button>
+                <button onClick={() => {showForm()}} className="aquarium-addButton-show"><img src="assets/Form/peceraNaranja.png" /></button>
             </div>
+            <p className="aquarium-containerButton-title">AÑADIR OTRO</p>
           </div>
       </div>
       </div>

@@ -28,10 +28,10 @@ const Doctor = () => {
       <div className="doctor-container">
           <img src="assets/Aquarium/Espacio.png" height="160px" alt="" />
           <div className="doctor-class">
-            <h3>¿Tienes dudas sobre tu pez?</h3>
+            <p className="doctor-class-text">¿Tienes dudas sobre tu pez?</p>
           </div>
           <div className="doctor-text">
-            <p>Nuestros especialistas prodrán resolver todas tus dudas</p>
+            <p className="doctor-text-text">Nuestros especialistas prodrán resolver todas tus dudas</p>
           </div>
           <button onClick={()=> {start()}} className="doctor-buttonSend">ENVIAR FOTOCONSULTA</button>
       </div>
