@@ -1,22 +1,19 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 
 import { useAuth0 } from "@auth0/auth0-react";
-import { photoContext } from "../../contexts/photoContext";
 import Header from "../Header/Header";
 
 import "./Profile.scss";
 
 export const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  const { photo, setPhoto } = useContext(photoContext);
-  const email = localStorage.getItem("email");
-  const { loginWithRedirect } = useAuth0();
+  const { user, isAuthenticated, isLoading, loginWithRedirect, logout } = useAuth0();
 
-  useEffect(()=> {
-    if(isAuthenticated){
-      localStorage.setItem("email", user.email);
+  useEffect(() => {
+    if(isAuthenticated && user){
+      localStorage.setItem("email", user.email)
     }
-  }, [user.email, isAuthenticated]);
+  }, [isAuthenticated, user]);
+
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -26,7 +23,7 @@ export const Profile = () => {
     <>
       <Header />
       <section className="profile">
-        {email ? (
+        {isAuthenticated ? (
           <>
             <div className="profile-data">
               <div className="profile-image">
@@ -39,7 +36,6 @@ export const Profile = () => {
                 <p>{user.email}</p>
               </div>
             </div>
-
             <div className="profile-atributes">
               <div className="profile-pics">
                 <img src="assets/Profile/pezcaptura.png" alt="" />
@@ -54,12 +50,21 @@ export const Profile = () => {
                 <p>3</p>
               </div>
             </div>
-
-            <button className="profile-button">SALIR</button>
+            <button className="profile-button" onClick={() => logout(
+              {isAuthenticated: false, returnTo: window.localStorage.removeItem("email")}
+            )}>
+              Logout
+            </button>
+            ;
           </>
         ) : (
           <>
-            <button className="profile-button" onClick={() => loginWithRedirect()}>Login</button>
+            <button
+              className="profile-button"
+              onClick={() => loginWithRedirect()}
+            >
+              Login
+            </button>
           </>
         )}
       </section>

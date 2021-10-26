@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Auth0Provider, useAuth0 } from '@auth0/auth0-react'; 
-import Login from "../../components/Login/Login"; 
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
-
-
 import Form from "../Form/Form";
-
 import { app } from "../../firebase";
 
 import "./Aquarium.scss"
@@ -14,8 +9,6 @@ import "./Aquarium.scss"
 
 function Aquarium() {
 
-  const { isAuthenticated } = useAuth0(); 
-  
   const [ aquarium, setNewAquarium ] = useState(false)
 
   const [show, setShow] = useState(false); 
