@@ -13,21 +13,18 @@ import "./Aquarium.scss"
 function Aquarium() {
 
   const history = useHistory()
-
-  const [ aquarium, setNewAquarium ] = useState(false)
-
-  const [show, setShow] = useState(false); 
   const [files, setFiles] = useState([]);
   const [viewForm, setviewForm] = useState(false) 
+  const [start, setNewSart] = useState(false) 
   const email = localStorage.getItem("email");
 
-  const start = () => {
-    setNewAquarium(true)
-    history.push("/profile")
+  const starter = () => {
+    setNewSart(true)
+    /* history.push("/profile") */
   }
   const showForm = () => {
-    setviewForm(true)
-  }
+   setviewForm(true) 
+  } 
 
   useEffect(() => {
     if(email) {
@@ -53,7 +50,7 @@ function Aquarium() {
     <HeaderLogo/>
     <div className="aquarium">
 
-    {files.length === 0 ? (
+    {files.length === 0 && !start ? (
       <>
       <div className="aquarium-conta">
           <img src="assets/Aquarium/Pecera.png" height="160px" alt="" className="pecera"/>
@@ -63,7 +60,7 @@ function Aquarium() {
           <div className="aquarium-text">
             <p>¡Saca una foto a tu pez y que empiece la aventura!</p>
           </div>
-          <button onClick={()=> {start()}} className="aquarium-buttonAdd">AÑADIR PEZ A MI ACUARIO</button>
+          <button onClick={()=> {starter()}} className="aquarium-buttonAdd">AÑADIR PEZ A MI ACUARIO</button>
       </div>
       </>
 
