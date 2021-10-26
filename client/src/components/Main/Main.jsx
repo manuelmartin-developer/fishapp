@@ -11,11 +11,13 @@ import Diagnosis from "../Diagnosis";
 import Profile from "../Profile"; 
 
 
+
 const Main = () => {
   return (
     <main className="main">
       
         <Switch>
+       
           <Route path="/" component={Home} exact/>
           <Route path="/camera" component={Camera}/>
           <Route path="/expert" component={Doctor}/>  

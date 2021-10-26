@@ -6,6 +6,7 @@ import Search from "../Search";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import { fishContext } from "../../contexts/fishContext";
+import Onboarding from "../Onboarding"
 
 const Home = () => {
   const history = useHistory();
@@ -19,6 +20,7 @@ const Home = () => {
   return (
     <>
       <HeaderLogo />
+
     <section className="home-container">
       <Search className="home-search" />
       <Stack direction="row" spacing={2}>

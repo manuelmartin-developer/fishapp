@@ -1,3 +1,10 @@
+
+body.swal2-shown > [aria-hidden="true"] {
+  transition: 0.1s filter;
+  filter: blur(10px);
+}
+
+
 .swal2-modal {
   width: 292px ;
   border-radius: 16px;
