@@ -8,6 +8,7 @@ import axios from "axios";
 import Nav from "../Nav/Nav";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import HeaderLogo from '../HeaderLogo'; 
 
 const Diagnosis = () => {
   const email = localStorage.getItem("email");
@@ -30,7 +31,6 @@ const Diagnosis = () => {
   const askExpert = () => {
     if (!email) {
       Toast.fire({
-        icon: "info",
         title: "Mi Acuario",
         text: " Para esta funcionalidad debes estar loggeado",
       }).then((result) => {
@@ -46,8 +46,7 @@ const Diagnosis = () => {
         text: " Esta en una funcionalidad premium",
       }).then((result) => {
         if (result.isConfirmed) {
-          // Aquí llevaría a registro premium
-          history.push("/home");
+            
         }
       });
     } else {
@@ -166,8 +165,8 @@ const Diagnosis = () => {
   }, [fishLatinName]);
   const close = () => {
     Toast.fire({
-      title: "¿Deseas salir sin guardar cambios?",
-      text: "Si sale, no se guardarán los cambios realizados",
+      title: "¿Desea salir sin hacer tu consulta?",
+      text: "Si sales, no sabrás que le pasa a tu pez",
       confirmButtonText: "SI",
     }).then((result) => {
       if (result.isConfirmed) {
@@ -180,6 +179,7 @@ const Diagnosis = () => {
         setDisease("");
         setDiseaseDescription([]);
         setSeeDiseases(false);
+        setDiseaseDetails(false);
         history.push("/diagnosis");
       }
     });
@@ -206,6 +206,7 @@ const Diagnosis = () => {
       <section className="diagnosis">
         {!goToForm ? (
           <>
+          <HeaderLogo />
             <div className="diagnosis-container">
               <img
                 src="assets/Diagnosis/peztirita.png"
@@ -233,8 +234,8 @@ const Diagnosis = () => {
         ) : (
           <>
             <div className="diagnosis-close">
-              <button className="camera-close-icon" onClick={() => close()}>
-                <CloseIcon className="camera-close-icon__icon" />
+              <button className="diagnosis-close-icon" onClick={() => close()}>
+                <CloseIcon className="diagnosis-close-icon__icon" />
               </button>
             </div>
             <div className="diagnosis-checklist">
@@ -296,76 +297,83 @@ const Diagnosis = () => {
     return (
       <section className="diagnosis">
         {!diseaseDetails ? (
-          <>
+          <div className="diagnosis-disease">
             <div className="diagnosis-close">
               <button className="diagnosis-close-icon" onClick={() => close()}>
-                <CloseIcon className="camera-close-icon__icon" />
+                <CloseIcon className="diagnosis-close-icon__icon" />
               </button>
             </div>
-            <div className="details-fishname">Diagnostico</div>
-            <div className="details-photo">
+            <div className="diagnosis-disease-fishname">Diagnóstico</div>
+            <div className="diagnosis-disease-photo">
               <img src={`assets/Details/${fishNameImg}.jpg`} alt="fish_photo" />
             </div>
-            <div className="details-title">
+            <div className="diagnosis-disease-title">
               <img src="assets/Details/oval.png" alt="oval_icon" />
               <h2>Posibles enfermedades</h2>
-            </div>
-            <div className="diagnosis-disease">
-              <div>
-                <p>{diseaseDescription.enfermedad}</p>
-                <p>{diseaseDescription.caracteristicas}</p>
+            </div> 
+            <div className="diagnosis-disease-card">
+              <div className="diagnosis-disease-card-details">
+                <p className="diagnosis-disease-card-details-title">{diseaseDescription.enfermedad}</p>
+                <p className="diagnosis-disease-card-details-resume">{diseaseDescription.caracteristicas ? diseaseDescription.caracteristicas.slice(0,50) + "..." : diseaseDescription.caracteristicas}</p>
               </div>
-              <button onClick={() => seeDiagnosisDetails()} className="">
-                <ArrowForwardIosIcon className="" />
+                <img className="diagnosis-disease-card-thumb" src={`assets/Details/${fishNameImg}.jpg`} alt="fish_thumb" />
+              <button onClick={() => seeDiagnosisDetails()} className="diagnosis-disease-card-icon">
+                <ArrowForwardIosIcon/>
               </button>
             </div>
-          </>
+            <button
+                onClick={() => {
+                  askExpert();
+                }}
+                className="diagnosis-askExpert"
+              >
+                HABLAR CON EXPERTO
+              </button> 
+          </div>
         ) : (
-          <>
+          <div className="diagnosis-info">
           <div className="diagnosis-close">
             <button className="diagnosis-close-icon" onClick={() => close()}>
               <CloseIcon className="camera-close-icon__icon" />
             </button>
           </div>
-          <div className="details-fishname">{diseaseDescription.enfermedad}</div>
-          <div className="details-photo">
+          <div className="diagnosis-info-fishname">{diseaseDescription.enfermedad}</div>
+          <div className="diagnosis-disease-photo">
             <img src={`assets/Details/${fishNameImg}.jpg`} alt="fish_photo" />
           </div>
-          <div className="details-title">
+          <div className="diagnosis-disease-title">
             <img src="assets/Details/oval.png" alt="oval_icon" />
             <h2>Principales síntomas</h2>
           </div>
-          <div className="diagnosis-disease">
-            <div>
-              <p>Principal síntoma:</p>
-              <p>{diseaseDescription.sintoma}</p>
-              <p>Otros síntomas:</p>
-              <p>{diseaseDescription.otros}</p>
-            </div>
+          <div className="diagnosis-info-card">
+              <p className="diagnosis-info-card-bold">Principal síntoma:</p>
+              <p className="diagnosis-info-card-normal">{diseaseDescription.sintoma}</p>
+              <p className="diagnosis-info-card-bold">Otros síntomas:</p>
+              <p className="diagnosis-info-card-normal">{diseaseDescription.otros}</p>
           </div>
-          <div className="details-title">
+          <div className="diagnosis-disease-title">
             <img src="assets/Details/oval.png" alt="oval_icon" />
             <h2>Descripción enfermedad:</h2>
           </div>
-          <div>
-              <p>{diseaseDescription.caracteristicas}</p>
+          <div className="diagnosis-info-card">
+              <p className="diagnosis-info-card-normal">{diseaseDescription.caracteristicas}</p>
           </div>
-          <div className="details-title">
+          <div className="diagnosis-disease-title">
             <img src="assets/Details/oval.png" alt="oval_icon" />
             <h2>Tratamiento:</h2>
           </div>
-          <div>
-              <p>{diseaseDescription.tratamiento}</p>
+          <div className="diagnosis-info-card">
+              <p className="diagnosis-info-card-normal">{diseaseDescription.tratamiento}</p>
           </div>
           <button
                 onClick={() => {
                   askExpert();
                 }}
-                className="diagnosis-buttonAdd"
+                className="diagnosis-askExpert"
               >
                 HABLAR CON EXPERTO
               </button>
-        </>
+        </div>
         )}
       </section>
     );

@@ -66,11 +66,12 @@ const Camera = () => {
   const close = () => {
     Toast.fire({
       title: "¿Deseas salir sin guardar cambios?",
-      text: "Si sale, no se guardarán los cambios realizados",
+      text: "Si sales, Guby no terminará la búsqueda",
       confirmButtonText: "SI",
     }).then((result) => {
       if (result.isConfirmed) {
         setPhoto("");
+        setFishName("");
         history.push("/");
       }
     });

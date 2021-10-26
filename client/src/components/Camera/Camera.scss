@@ -36,13 +36,14 @@
   }
   &-result {
 
-
-    padding: 15px;
+    display: flex;
+    justify-content: center;
     
     &-img {
-        border-radius: 28px;
-        height: auto;
-        object-fit: scale-down;
+      border-radius: 28px;
+      width: 90%;
+      height: auto;
+      object-fit: scale-down;
     }
   }
 
