@@ -1,16 +1,6 @@
 import React from "react";
-import { Switch, Route } from 'react-router-dom';
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import BottomNavigation from "@mui/material/BottomNavigation";
-import Home from "@mui/icons-material/Home";
-import Camera from "@mui/icons-material/Camera";
-import SetMeal from "@mui/icons-material/SetMeal";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faStethoscope, faVial } from '@fortawesome/free-solid-svg-icons';
-import Aquarium from "../Aquarium"
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-import ScienceIcon from "@mui/icons-material/Science";
-import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 
 import "./Nav.scss";

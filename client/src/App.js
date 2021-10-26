@@ -10,7 +10,7 @@ import Onboarding from './components/Onboarding';
 function App() {
 
   const [fishName, setFishName] = useState("");
-  const [details, setDetails] = useState(null);
+  const [details, setDetails] = useState([]);
 
   const [photo, setPhoto] = useState("");
   const [loading, setLoading] = useState(true);
