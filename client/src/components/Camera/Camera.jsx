@@ -65,8 +65,9 @@ const Camera = () => {
 
   const close = () => {
     Toast.fire({
-      icon: "info",
-      title: "Deseas salir sin guardar?",
+      title: "¿Deseas salir sin guardar cambios?",
+      text: "Si sale, no se guardarán los cambios realizados",
+      confirmButtonText: "SI",
     }).then((result) => {
       if (result.isConfirmed) {
         setPhoto("");
@@ -79,30 +80,18 @@ const Camera = () => {
       facingMode === "user" ? setFacingMode({exact: 'environment'}) : setFacingMode("user")
   };
 
-
-
-
   const reset = () => {
     setPhoto("");
-  };
-  const gotoSearch = () => {
-    setPhoto("");
-    history.push("/search");
   };
 
   useEffect(() => {
     if (!photoTips) {
       Toast.fire({
-        title: "<strong>Tips para la foto perfecta</strong>",
-        icon: "info",
         html:
-          '<img src="https://www.hogarmania.com/archivos/201105/killi-nothobranchius-rachovii-xl-668x400x80xX.jpg"/> ' +
-          "Encuadra bien el pez en la foto ",
-        showCloseButton: true,
-        showCancelButton: false,
+          '<img  src="assets/Camera/modal_tips.png" height="300px"/>' ,
         showConfirmButton: true,
-        confirmButtonText: "ok",
-        focusConfirm: false,
+        showCancelButton: false,
+        confirmButtonText: "ENTENDIDO",
       }).then((result) => {
         if (result.isConfirmed) {
           localStorage.setItem("photoTips", false);
@@ -189,7 +178,6 @@ const Camera = () => {
               <button className="camera-no-identify-button" onClick={() => history.push("/")}>Buscar por nombre</button>
             </div>
             </section>
-            <Nav />
             </>
           )}
         </>
