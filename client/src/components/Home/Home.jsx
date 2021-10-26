@@ -20,7 +20,7 @@ const Home = () => {
     <section className="home-container">
       <Search className="home-search" />
       <Stack direction="row" spacing={2}>
-        <button className="home-avatar">
+        <button className="home-avatar" onClick={()=> {history.push("/profile")}}>
           <Avatar sx={{ width: 28, height: 28
  }} alt="Remy Sharp" src="" />
         </button>
