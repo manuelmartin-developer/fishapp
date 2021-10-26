@@ -39,28 +39,28 @@ const Camera = () => {
     });
     setPhoto(imageSrc);
 
-    // setFishName("guppy");
+    setFishName("guppy");
 
-    const payload = { data: photo };
+    // const payload = { data: photo };
 
-    const options = {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    };
-    (async () => {
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/api/details",
-          payload,
-          options
-        );
-        console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    // const options = {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Allow-Origin": "*",
+    //   },
+    // };
+    // (async () => {
+    //   try {
+    //     const response = await axios.post(
+    //       "http://localhost:5000/api/details",
+    //       payload,
+    //       options
+    //     );
+    //     console.log(response.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // })();
   };
 
   const close = () => {
@@ -84,6 +84,7 @@ const Camera = () => {
     setPhoto("");
   };
 
+  
   useEffect(() => {
     if (!photoTips) {
       Toast.fire({

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "../Nav";
-import Header from "../Header";
+import HeaderLogo from "../HeaderLogo";
 import Search from "../Search";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
@@ -9,14 +9,16 @@ import { fishContext } from "../../contexts/fishContext";
 
 const Home = () => {
   const history = useHistory();
-  const { details } = useContext(fishContext);
+  const { fishName } = useContext(fishContext);
 
   useEffect(() => {
-    if (details) {
+    if (fishName) {
       history.push("/details");
     }
-  }, [details, history]);
+  }, [fishName]);
   return (
+    <>
+      <HeaderLogo />
     <section className="home-container">
       <Search className="home-search" />
       <Stack direction="row" spacing={2}>
@@ -36,9 +38,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <Header />
       <Nav />
     </section>
+    </>
   );
 };
 

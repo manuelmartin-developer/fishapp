@@ -11,7 +11,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import Header from "../Header/Header";
+import Nav from "../Nav/Nav";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 
 
@@ -202,21 +202,22 @@ const Diagnosis = () => {
 
 
     <section className="diagnosis">
-
       <HeaderLogo/>
+
 
       {!goToForm ? (
        <>
-      <div className="diagnosis-conta">
+      <div className="diagnosis-container">
           <img src="assets/Diagnosis/peztirita.png" height="160px" alt="" className="pecera"/>
           <div className="diagnosis-class">
-            <p>¿Tú pez no tiene la apariencia habitual?</p>
+            <p>¿Tu pez no tiene la apariencia habitual?</p>
           </div>
           <div className="diagnosis-text">
             <p>Rellena este breve cuestionario para saber qué le pasa</p>
           </div>
           <button onClick={()=> {seeForm()}} className="diagnosis-buttonAdd">RELLENAR CUESTIONARIO</button>
       </div>
+      <Nav className="diagnosis-nav" />
       </>
       ) : (
         <div className="diagnosis-checklist">
@@ -261,7 +262,7 @@ const Diagnosis = () => {
         </Stack>
         </div>
       )}
-      {disease ? (
+      {/* {disease ? (
         <>
           <br />
           <Box sx={{ width: 300 }}>
@@ -270,7 +271,7 @@ const Diagnosis = () => {
         </>
       ) : (
         <p></p>
-      )}
+      )} */}
     </section>
   );
 };
