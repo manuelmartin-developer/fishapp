@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Webcam from "react-webcam";
+import RefreshIcon from '@mui/icons-material/Refresh';
 import CircularProgress from "@mui/material/CircularProgress";
 import CameraIcon from "@mui/icons-material/Camera";
 import IconButton from "@mui/material/IconButton";
@@ -15,7 +16,7 @@ import './DrCam.scss'
 
 
 
-const Camera = () => {
+const DrCam = () => {
   const webcamRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -38,40 +39,32 @@ const Camera = () => {
     });
     setPhoto(imageSrc);
    /*  setFishName("guppy") */
-    const payload = { data: photo };
-
-    const options = {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    };
-    (async () => {
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/api/details",
-          payload,
-          options
-        );
-        console.log(response.data);
-        
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  };
-
-  const close = () => {
     Toast.fire({
-      icon: "info",
-      title: "Deseas anular la consulta?",
+      title: "¿Desea usar esta foto?",
+      text: "Si sale, no se guardarán los cambios realizados",
+      confirmButtonText: "SI",
     }).then((result) => {
       if (result.isConfirmed) {
-        setPhoto(photo); //reseteamos la imagen en el caso de que se confirme la opción de salir cancelar consulta. 
-        history.push("/");
-      }
-    });
-  };
+        setPhoto("");
+        history.push("/expertcontact");
+    }
+  });
+};
+
+const close = () => {
+  Toast.fire({
+    title: "¿Deseas salir sin guardar cambios?",
+    text: "Si sale, no se guardarán los cambios realizados",
+    confirmButtonText: "SI",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      setPhoto("");
+      history.push("/");
+
+    }
+  });
+};
+
 
   const reset = () => {
     setPhoto("");
@@ -85,8 +78,6 @@ const Camera = () => {
   const goToHome = () => {
     history.push("/home")
   }
-
-
 
   useEffect(() => {
     if (!photoTips) {
@@ -127,7 +118,7 @@ const Camera = () => {
         <>
           <Webcam
             audio={false}
-            
+            className="camera-webcam"
             mirrored={true}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
@@ -135,16 +126,16 @@ const Camera = () => {
             videoConstraints={videoConstraints}
             screenshotQuality={1}
           />
-          <div className="camera-close">
-            <button className="camera-close-icon" onClick={() => close()}>
-              <CloseIcon className="camera-close-icon__icon" />
-            </button>
-          </div>
-           <div className="camera-capture-icon">
-            <button
-              className="camera-capture-icon__icon"
-              onClick={() => capture()}
-            >
+            <div className="camera-close">
+              <button className="camera-close-icon" onClick={() => close()}>
+                <CloseIcon className="camera-close-icon__icon" />
+              </button>
+            </div>
+            <div className="camera-capture-icon">
+              <button
+                className="camera-capture-icon__icon"
+                onClick={() => capture()}
+              >
               <img src="assets/Camera/burbuja.svg" alt="" />
             </button>
           </div>
@@ -153,32 +144,11 @@ const Camera = () => {
         <>
           {photo ? (
             <>
-             <div className="camera-fishname">
-
-            {/*     <h1>{fishName}</h1> */}
-
-            <div className="confirmation-container">
-                <h4>¿Desea usar esta foto?</h4>
-              <div className="confirmation-buttons">
-                <button className="yes-button" onClick={() => goToDrCard()}>Si</button>
-                <button className="no-button" onClick={() => goToHome()}>No</button>
-              </div>
-            </div>
-      
-              </div>
               <div className="camera-capture">
                 <img src={photo} alt="cam_capture" />
               </div>
               <div className="camera-close-icon">
-             {/*   */}
-                <IconButton
-                  sx={{ color: "black", display: "flex", position: "relative" }}
-                  onClick={close}
-                  aria-label="reload picture"
-                  component="span"
-                >
-                  <CloseIcon sx={{ fontSize: "4rem" }} />
-                </IconButton>
+      
               </div>
             </>
           ) : (
@@ -187,11 +157,17 @@ const Camera = () => {
               <button onClick={() => reset()}>Volver a tomar foto</button>
              {/*  <button onClick={() => gotoSearch()}>Buscar por nombre</button> */}
             </div>
+            
           )}
+           <div className="camera-refresh">
+                <button className="camera-refresh-icon" onClick={() => reset()}>
+                  <RefreshIcon className="camera-refresh-icon__icon" />
+                </button>
+              </div>
         </>
       )}
     </section>
   );
 };
 
-export default Camera;
+export default DrCam;

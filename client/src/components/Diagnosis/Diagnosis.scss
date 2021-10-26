@@ -7,6 +7,10 @@
     align-content: center;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    left: 16px;
+    top: 99px;
+    height: 100vh;
 
     &-conta {
         display: flex;
@@ -19,6 +23,7 @@
         align-content: center;
         flex-wrap: wrap;
         align-items: center;
+        z-index: 99999;
     }
 
     &-class {
@@ -89,6 +94,31 @@
         /* Glub/Poppins/BOTÓN1/16px Extrabold HL24 */
 
     }
+    &-buttonAdd {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 256px;
+        height: 48px;
+        left: 60px;
+        top: 485px;
+        margin: 50px;
+        /* Color Corporativo/Principal/Acento */
+        background: #FF8878;
+        box-shadow: 0px 4px 2px rgba(204, 24, 0, 0.15);
+        border-radius: 85px;
+        border: none;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 24px;
+        color: #FFF6F5;
+        /* Glub/Poppins/BOTÓN1/16px Extrabold HL24 */
+
+    }
     &-checklist {
         display: flex;
         flex-direction: column;
@@ -105,5 +135,19 @@
         /* Color Corporativo/Neutro Dark/Light/Azul/20 */
 
         color: #19204D;
+    }
+
+
+    .css-1jruifh-MuiStack-root {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 300px;
+        flex-wrap: wrap;
+        align-content: space-around;
     }
 }

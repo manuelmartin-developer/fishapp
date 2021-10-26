@@ -1,0 +1,106 @@
+ <>
+        <div className="nav">
+              <div className="nav_logo">
+              <h3>FullFish</h3>
+              </div>
+
+              <ul className="nav_links">
+              </ul>
+                <div className="container-menu">
+                  {isAuthenticated ? <>
+                    <Logout/>
+                   {/*  <Profile/> */}
+                    {/* <Camera/> */}
+                    <button onClick={() => setShow(!show)}>
+                      Añadir al libro de familia</button>
+                    {show && <Form/>}
+                    
+
+                    </>
+                    
+                    :<Login/>
+                      }
+                      
+                </div>
+                <div>
+                </div>
+        </div>
+    
+    </>
+
+
+
+
+    .modal-container {
+
+  /* Color Corporativo/Neutro Blanco */
+  background: #FFFFFF;
+  /* Card */
+  box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
+  border-radius: 16px;
+  width: 292px;
+  height: 176px;
+  display: flex;
+  flex-direction: column;
+
+    &-text {
+      /* Glub/Poppins/BODYB/16px Bold HL24 */
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      /* identical to box height, or 150% */
+      /* Color Corporativo/Neutro Dark/Light/Azul/20 */
+      color: #19204D;
+    }
+
+    &-title {
+      /* Glub/Poppins/CAPTION/12px Regular HL20 */
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    /* or 167% */
+    text-align: center;
+    /* Color Corporativo/Neutro Dark/Azul */
+    color: #263073;
+    }
+  
+
+.modal-buttons {
+      display: flex;
+      flex-direction: row;
+
+        &-yes {
+        width: 120px;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+         /* Color Corporativo/Principal/Acento */
+        background: #FF8878;
+        box-shadow: 0px 4px 2px rgba(255, 75, 51, 0.15);
+        border-radius: 85px;
+        border: none; 
+      }
+
+        &-no {
+          color: #FF8878;
+          border: none; 
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: 800;
+          font-size: 16px;
+          line-height: 24px;
+          background-color: transparent;
+        }
+
+
+    }
+
+}
+
+         

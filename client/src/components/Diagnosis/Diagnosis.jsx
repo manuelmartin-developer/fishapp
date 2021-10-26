@@ -13,6 +13,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Header from "../Header/Header";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
+import Nav from "../Nav";
 
 
 
@@ -199,12 +200,9 @@ const Diagnosis = () => {
   );
 
   return (
-
-
+    
     <section className="diagnosis">
-
       <HeaderLogo/>
-
       {!goToForm ? (
        <>
       <div className="diagnosis-conta">
@@ -271,7 +269,10 @@ const Diagnosis = () => {
       ) : (
         <p></p>
       )}
+      <Nav/>
+   
     </section>
+  
   );
 };
 

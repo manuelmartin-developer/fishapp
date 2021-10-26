@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { fishContext } from "../../contexts/fishContext";
 import { photoContext } from "../../contexts/photoContext";
 import { Mixin, Toast } from "../../hooks/useToast";
@@ -8,18 +8,15 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 const Details = () => {
-  
   const { fishName, setFishName } = useContext(fishContext);
   const { photo, setPhoto } = useContext(photoContext);
   const { details, setDetails } = useContext(fishContext);
-  const isLogged = localStorage.getItem("isLogged");
   const email = localStorage.getItem("email");
   const history = useHistory();
   const fishNameImg = fishName.toLowerCase().replace(/ /g, "");
 
-
   const addMyAquarium = async () => {
-    if (isLogged) {
+    if (email) {
       const refCollection = app.firestore().collection("images");
       const docFile = await refCollection
         .doc()
@@ -31,12 +28,11 @@ const Details = () => {
       setPhoto("");
     } else {
       Toast.fire({
-        icon: "info",
         title: "Mi Acuario",
-        text: " Para guardar fotos debes estar loggeado",
+        text: "Para guardar fotos debes estar loggeado",
       }).then((result) => {
         if (result.isConfirmed) {
-          history.push("/aquarium");
+          history.push("/profile");
         }
       });
     }
@@ -72,14 +68,13 @@ const Details = () => {
           payload,
           options
         );
+
         setDetails(response.data[0]);
       } catch (error) {
         console.log(error);
       }
     })();
-  }, [fishName]);
-
-  console.log(details);
+  }, []);
 
   return (
     <section className="details">
@@ -151,7 +146,11 @@ const Details = () => {
         </div>
         <div className="details-scroll-data">
           <div className="details-scroll-data-images-horizontal">
-            <img id="img-temperatura" src="assets/Details/temperature.png" alt="" />
+            <img
+              id="img-temperatura"
+              src="assets/Details/temperature.png"
+              alt=""
+            />
           </div>
           <p className="details-scroll-data-images-title">TEMPERATURA</p>
           <p>{details.temperatura}</p>
@@ -165,7 +164,11 @@ const Details = () => {
         </div>
         <div className="details-scroll-data">
           <div className="details-scroll-data-images-horizontal">
-            <img id="img-temperamento" src="assets/Details/temperamento.png" alt="" />
+            <img
+              id="img-temperamento"
+              src="assets/Details/temperamento.png"
+              alt=""
+            />
           </div>
           <p className="details-scroll-data-images-title">TEMPERAMENTO</p>
           <p>{details.temperamento}</p>
@@ -183,9 +186,14 @@ const Details = () => {
         <p className="details-description-bold">Especies incompatibles:</p>
         <p>{details.descripcion}</p>
       </div>
-      <button className="details-button" onClick={() => {
+      <button
+        className="details-button"
+        onClick={() => {
           addMyAquarium();
-        }}>AÑADIR A MI ACUARIO</button>
+        }}
+      >
+        AÑADIR A MI ACUARIO
+      </button>
     </section>
   );
 };

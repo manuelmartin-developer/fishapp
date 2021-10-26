@@ -39,7 +39,7 @@ const Camera = () => {
     });
     setPhoto(imageSrc);
 
-    // setFishName("guppy");
+    setFishName("guppy")
 
     const payload = { data: photo };
 

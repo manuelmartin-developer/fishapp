@@ -4,9 +4,12 @@ import "./HeaderLogo.scss"
 
 
 const HeaderLogo = () => {
-  return <div className="headerLogo">
+
+  return <header>
+    
     <img src="assets/Header/cabeceraconlogo.png" alt="header_logo" />
-  </div>;
+
+  </header>;
 };
 
 export default HeaderLogo;

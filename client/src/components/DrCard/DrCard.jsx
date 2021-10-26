@@ -1,77 +1,283 @@
-import React, { useContext, useEffect, useState } from "react";
-import { fishContext } from "../../contexts/fishContext";
-import { photoContext } from "../../contexts/photoContext";
-import { Mixin, Toast } from "../../hooks/useToast";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import { app } from "../../firebase";
+import { Toast } from "../../hooks/useToast";
+import { useHistory } from "react-router-dom";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
 import axios from "axios";
-import { useHistory } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Header from "../Header/Header";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
+import Nav from "../Nav";
 
 import "./DrCard.scss"
 
 const DrCard = () => {
-
-
-
-  const [value, setValue] = React.useState([]);
-  
- /*  const { fishName, setFishName } = useContext(fishContext); */
-  const { photo, setPhoto } = useContext(photoContext);
-  const [details, setDetails] = useState([]);
-  const isLogged = localStorage.getItem("isLogged");
   const email = localStorage.getItem("email");
+  const [isLogged, setIslogged] = useState(false);
+  const [premiumUser, setPremiumUser] = useState(false);
+  const [goToForm, setGoToForm] = useState(false);
   const history = useHistory();
+  const [fishName, setFishName] = useState("");
+  const [fishLatinName, setFishLatinName] = useState("");
+  const [fishesNames, setFisheshName] = useState([]);
+  const [diseases, setDiseases] = useState([]);
+  const [disease, setDisease] = useState("");
+  const [diseaseDescription, setDiseaseDescription] = useState("");
 
 
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-
-  const sendRequisition = async () => {
-    if(isLogged){
-      const refCollection = app.firestore().collection("images");
-      const docFile = await refCollection.doc().set({ email: email, url: photo });
-      Mixin.fire({
-        icon: "success",
-        title: "El pez ha sido agregado a Mi Acuario",
-      });
-      setPhoto("");
-    }else{
+  const askExpert = () => {
+    if (!isLogged) {
       Toast.fire({
         icon: "info",
         title: "Mi Acuario",
-        text: " Para guardar fotos debes estar loggeado"
+        text: " Para esta funcionalidad debes estar loggeado",
       }).then((result) => {
         if (result.isConfirmed) {
-          history.push("/");
+          history.push("/aquarium");
         }
       });
+    } 
+    if(!premiumUser){
+      Toast.fire({
+        icon: "info",
+        title: "Mi Experto",
+        text: " Esta en una funcionalidad premium",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Aquí llevaría a registro premium
+          history.push("/home");
+        }
+      });
+    }else{
+      // Aquí redirigir a mi experto
+      console.log("A mi experto")
     }
-  }
+  };
 
+  const seeForm = () => {
+    setGoToForm(true);
+  };
+
+  const handleInputChange = (event, value) => {
+    setDisease("");
+    for (let fish of fishesNames) {
+      if (fish.nombre === value) {
+        setFishName(value);
+        break;
+      } else {
+        setFishName("");
+      }
+    }
+  };
+  const handleInputChange2 = (event, value) => {
+    for (let disease of diseases) {
+      if (disease.enfermedad === value) {
+        setDisease(value);
+        setDiseaseDescription(disease.caracteristicas);
+        break;
+      } else {
+        setDisease("");
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (email === "mmartindj@gmail.com") {
+      setIslogged(true);
+      setPremiumUser(true);
+    } else if (email) {
+      setIslogged(true);
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (fishesNames.length === 0) {
+      const options = {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      };
+      (async () => {
+        try {
+          const response = await axios.get(
+            "http://localhost:5000/api/names",
+            options
+          );
+
+          setFisheshName(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
+
+    if (fishName) {
+      const payload = { name: fishName };
+
+      const options = {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      };
+      (async () => {
+        try {
+          const response = await axios.post(
+            "http://localhost:5000/api/details",
+            payload,
+            options
+          );
+
+          setFishLatinName(response.data[0].latin);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
+  }, [fishName, fishesNames]);
+
+  useEffect(() => {
+    if (fishLatinName) {
+      const payload = { name: fishLatinName };
+
+      const options = {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      };
+      (async () => {
+        try {
+          const response = await axios.post(
+            "http://localhost:5000/api/diagnosis",
+            payload,
+            options
+          );
+
+          setDiseases(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
+  }, [fishLatinName]);
+
+  const card = (
+
+    <React.Fragment>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Diagnóstico
+        </Typography>
+        <Typography variant="h4" component="div">
+          {fishName}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          {fishLatinName}
+        </Typography>
+        <Typography variant="h5" component="div">
+          {disease}
+        </Typography>
+        <Typography variant="body2">
+          {diseaseDescription}
+          <br />
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button onClick={askExpert} size="small">
+          Hablar con experto
+        </Button>
+      </CardActions>
+    </React.Fragment>
+  );
 
   return (
-    <section className="doctor-container">
+    
+    <section className="consulta">
+      <HeaderLogo/>
+     
+        <div className="consulta-checklist">
+          <p className="consulta-title">¿Qué síntomas tiene tu pez?</p>
+        <Stack spacing={2} sx={{ width: 300 }}>
+          <Autocomplete
+            freeSolo
+            id="free-solo-2-demo"
+            disableClearable
+            onInputChange={handleInputChange}
+            options={fishesNames.map((option) => option.nombre)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Busca un pez"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+          />
+          <Autocomplete
+            freeSolo
+            id="free-solo-3-demo"
+            disableClearable
+            onInputChange={handleInputChange2}
+            options={diseases.map((option) => option.enfermedad)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Síntoma 1"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+          />
+          <Autocomplete
+            freeSolo
+            id="free-solo-3-demo"
+            disableClearable
+            onInputChange={handleInputChange2}
+            options={diseases.map((option) => option.enfermedad)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Síntoma 2"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+          />
+          <button className="consulta-searchButton-yes">ACEPTAR</button>
+          <button className="consulta-searchButton-no">CANCELAR</button>
 
-    <form action="" onChange={handleChange} className="container-form">
-      <h3>¿Qué síntomas tiene tu pez?</h3>
-      <div>
-      <textarea className="text-field"
-          onChange={handleChange}
+        </Stack>
+        </div>
 
-        />
-      </div>
-      <div className="confirmation-buttons">
-        <button className="yes-button">Aceptar</button>
-        <button className="cancelar-button">Cancelar</button>
-      </div>
-    </form>
-
+      {disease ? (
+        <>
+          <br />
+          <Box sx={{ width: 300 }}>
+            <Card variant="outlined">{card}</Card>
+          </Box>
+        </>
+      ) : (
+        <p></p>
+      )}
+    
+   
     </section>
+  
   );
 };
+
 export default DrCard;

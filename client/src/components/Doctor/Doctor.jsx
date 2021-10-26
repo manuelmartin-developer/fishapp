@@ -4,6 +4,8 @@ import Camera from '../Camera/Camera';
 import DrCam from '../DrCam/DrCam'
 import Button from '@mui/material/Button'
 import './Doctor.scss'
+import Nav from "../Nav";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
 
 
 const Doctor = () => {
@@ -19,7 +21,8 @@ const Doctor = () => {
   }
 
   return <section className="doctor">
-  
+    
+
     {!startConsulta ? (
       <>
       <div className="doctor-container">
@@ -32,6 +35,8 @@ const Doctor = () => {
           </div>
           <button onClick={()=> {start()}} className="doctor-buttonSend">ENVIAR FOTOCONSULTA</button>
       </div>
+      <Nav/>
+      <HeaderLogo/>
       </>
 
     ) : (
@@ -39,8 +44,12 @@ const Doctor = () => {
       <DrCam/>
 
     )
+      
+  }
 
-  }  </section>
+  
+
+  </section>
     
 }
 

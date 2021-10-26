@@ -2,12 +2,17 @@ import React, { useState, useEffect } from "react";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import Form from "../Form/Form";
 import { app } from "../../firebase";
-
+import Nav from "../Nav";
+import { useHistory } from "react-router-dom";
 import "./Aquarium.scss"
 
 
 
+
+
 function Aquarium() {
+
+  const history = useHistory()
 
   const [ aquarium, setNewAquarium ] = useState(false)
 
@@ -18,6 +23,7 @@ function Aquarium() {
 
   const start = () => {
     setNewAquarium(true)
+    history.push("/profile")
   }
   const showForm = () => {
     setviewForm(true)
@@ -43,10 +49,8 @@ function Aquarium() {
  
   return (
   
-    <section >
-
+    <section className>
     <HeaderLogo/>
-
     <div className="aquarium">
 
     {files.length === 0 ? (
@@ -64,24 +68,25 @@ function Aquarium() {
       </>
 
     ) : !viewForm ? (
-
-      <div className="gallery">
+      <div className="aquarium-viewForm">
+        <div className="aquarium-title">
+          <p>Mi acuario</p>
+        </div>
+      <div className="aquarium-gallery">
           {files.map((file, index) => ( /* Pinta los datos de la data base, almacenados denteo del estado files. */
-            <div className="gallery-element" key={index}>
-              <div className="container-image">
-                <img className="style-img" src={file.url} alt="" /> 
+            <div className="aquarium-gallery-image" key={index}>
+                <img className="aquarium-gallery-image-detail" src={file.url} alt="" /> 
                 <h3>{file.name}</h3>
-              </div>
             </div>
           ))}
-          <div className="add-full-container">
-            <div className="add-container">
+          <div className="aquarium-containerButton">
+            <div className="aquarium-addButton">
               <img src="assets/Form/peceraNaranja.png" />
                 <button onClick={() => {showForm()}}>AÑADIR OTRO</button>
             </div>
           </div>
       </div>
-
+      </div>
     ) : (
       <Form />
     )
@@ -89,7 +94,7 @@ function Aquarium() {
   }
 
     </div>
-   
+    <Nav/>
     </section>
   )
 }

@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Header from "../Header/Header";
 
 import "./Profile.scss";
+import Nav from "../Nav";
 
 export const Profile = () => {
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } = useAuth0();
@@ -21,13 +22,13 @@ export const Profile = () => {
 
   return (
     <>
-      <Header />
+      
       <section className="profile">
         {isAuthenticated ? (
           <>
             <div className="profile-data">
               <div className="profile-image">
-                <p>{user.url}</p>
+                <p>{user.picture}</p>
               </div>
               <div className="profile-name">
                 <p>{user.name}</p>
@@ -67,7 +68,10 @@ export const Profile = () => {
             </button>
           </>
         )}
+        
       </section>
+      <Header />
+      <Nav/>
     </>
   );
 };

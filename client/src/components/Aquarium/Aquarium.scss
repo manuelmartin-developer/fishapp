@@ -7,6 +7,53 @@
     align-content: center;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+
+    &-title {
+        /* Glub/Poppins/HEADER5B/24px Bold HL32 */
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        /* or 133% */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        /* Color Corporativo/Neutro Dark/Light/Azul/20 */
+        color: #19204D;
+    }
+
+    &-viewForm {
+        display: flex;
+        flex-direction: column;
+        width: 344px;
+        height: 493px;
+        left: 16px;
+        top: 96px;
+        /* Color Corporativo/Neutro Dark/Light/Azul/98 */
+        background: #F7F8FC;
+        /* Card */
+        box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
+        border-radius: 28px;
+    }
+
+
+    &-gallery {
+
+        display: flex;
+        flex-direction: row;
+
+        &-image {
+            display: flex;
+            flex-direction: column;
+
+            &-detail {
+                width: 80px;
+                border-radius: 100%;
+            }
+        }
+    }
 
     &-conta {
         display: flex;
@@ -19,6 +66,7 @@
         align-content: center;
         flex-wrap: wrap;
         align-items: center;
+        z-index: 99999;
     }
 
     &-class {

@@ -20,8 +20,7 @@ const Nav = () => {
 
 
   return (
-  
-      
+      <nav>
       <BottomNavigation
         sx={{ width: "100%", }}
         value={value}
@@ -69,8 +68,9 @@ const Nav = () => {
           icon={<img src="assets/Nav/expert.svg" alt="nav_expert"/> }
         />
       </BottomNavigation>
-
+      </nav>
   );
 };
 
 export default Nav;
+
