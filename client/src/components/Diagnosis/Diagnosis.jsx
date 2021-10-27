@@ -199,7 +199,6 @@ const Diagnosis = () => {
     setDiseaseDetails(true);
   }
 
-  console.log(diseaseDescription);
   
   if (!seeDiseases) {
     return (
@@ -273,6 +272,7 @@ const Diagnosis = () => {
                         ...params.InputProps,
                         type: "search",
                       }}
+                     
                     />
                   )}
                 />

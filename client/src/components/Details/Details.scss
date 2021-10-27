@@ -1,11 +1,16 @@
 .details {
-  margin-top: 60px;
+  margin-top: 45px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   padding: 0 15px;
   overflow: hidden;
+
+  &-hearth {
+    position: absolute;
+    right: 30px;
+  }
 
   &-fishname {
     font-family: "Poppins";
@@ -17,6 +22,66 @@
     align-items: center;
     color: #23dcc9;
     margin-bottom: 15px;
+  }
+  &-thumbs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 9;
+    position: relative;
+    bottom: 35px;
+    width: 100%;
+
+    &-macho {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-right: 5px;
+      &-text {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 22px;
+        color: #51e3d4;
+      }
+      & > img {
+        border-radius: 28px;
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border: 3px solid #51e3d4;
+        box-sizing: border-box;
+        z-index: 9;
+      }
+    }
+    &-hembra {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-left: 5px;
+      &-text {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 22px;
+        color: #263073;
+      }
+      & > img {
+        border-radius: 28px;
+        width: 64px;
+        height: 64px;
+        object-fit: fill;
+        border: 3px solid #ffffff;
+        box-sizing: border-box;
+        z-index: 9;
+      }
+    }
   }
 
   &-photo {
@@ -64,9 +129,11 @@
     line-height: 22px;
     & > p {
       margin: 2px 0;
+      color: #263073;
     }
     &-bold {
       font-weight: bold;
+      color: #19204d;
     }
   }
 
@@ -87,14 +154,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center !important;
-      width: 150px !important;
-      height: 150px !important;
+      width: 150vw !important;
+      height: 112px !important;
       white-space: pre;
       border-radius: 28px;
       background-color: #f7f8fc;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
       box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1),
         0px -1px 10px rgba(38, 48, 115, 0.1);
       font-family: "Poppins";
@@ -131,6 +195,13 @@
           font-size: 12px;
           line-height: 20px;
           color: #1cb0a1;
+          width: 120px !important;
+          text-align: center;
+          white-space: normal;
+        }
+        &-text {
+          white-space: normal;
+          color: #263073;
         }
       }
       & > p {
@@ -144,7 +215,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 12px 94px;
+    width: 328;
+    padding: 12px 84px;
     background: #ff7866;
     box-shadow: 0px 4px 2px rgba(204, 24, 0, 0.15);
     border-radius: 85px;

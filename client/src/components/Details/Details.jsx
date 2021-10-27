@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { fishContext } from "../../contexts/fishContext";
 import { photoContext } from "../../contexts/photoContext";
 import { Mixin, Toast } from "../../hooks/useToast";
-import CloseIcon from "@mui/icons-material/Close";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { app } from "../../firebase";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -22,7 +22,7 @@ const Details = () => {
         .doc()
         .set({ email: email, url: photo });
       Mixin.fire({
-        icon: "success",
+        position: "center",
         title: "El pez ha sido agregado a Mi Acuario",
       });
       setPhoto("");
@@ -39,18 +39,10 @@ const Details = () => {
   };
 
   const close = () => {
-    Toast.fire({
-      title: "¿Deseas salir sin guardar cambios?",
-      text: "Si sale, no se guardarán los cambios realizados",
-      confirmButtonText: "SI",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        setPhoto("");
-        setFishName("");
-        setDetails("");
-        history.push("/");
-      }
-    });
+    setPhoto("");
+    setFishName("");
+    setDetails("");
+    history.push("/camera");
   };
 
   useEffect(() => {
@@ -80,12 +72,29 @@ const Details = () => {
     <section className="details">
       <div className="camera-close">
         <button className="camera-close-icon" onClick={() => close()}>
-          <CloseIcon className="camera-close-icon__icon" />
+          <ArrowBackIcon className="camera-close-icon__icon" />
         </button>
       </div>
-      <div className="details-fishname">{fishName}</div>
+      <div className="details-fishname">
+        {fishName}
+        <img
+          className="details-hearth"
+          src="assets/Details/hearth.svg"
+          alt="hearth_icon"
+        />
+      </div>
       <div className="details-photo">
         <img src={`assets/Details/${fishNameImg}.jpg`} alt="fish_photo" />
+      </div>
+      <div className="details-thumbs">
+        <div className="details-thumbs-macho">
+          <img className="details-thumbs-macho" src={`assets/Details/${fishNameImg}_macho.jpg`} alt="fish_photo" />
+          <p className="details-thumbs-macho-text">Macho</p>
+        </div>
+        <div className="details-thumbs-hembra">
+          <img className="details-thumbs-hembra" src={`assets/Details/${fishNameImg}_hembra.jpg`} alt="fish_photo" />
+          <p className="details-thumbs-hembra-text">Hembra</p>
+        </div>
       </div>
       <div className="details-title">
         <img src="assets/Details/oval.png" alt="oval_icon" />
@@ -120,7 +129,7 @@ const Details = () => {
             <img id="img-agua" src="assets/Details/agua.png" alt="" />
           </div>
           <p className="details-scroll-data-images-title">PH AGUA</p>
-          <p>{details.ph}</p>
+          <p className="details-scroll-data-images-text">{details.ph}</p>
         </div>
         <div className="details-scroll-data">
           <div className="details-scroll-data-images-horizontal">
@@ -128,21 +137,21 @@ const Details = () => {
             <img id="img-fish" src="assets/Details/fish.png" alt="" />
           </div>
           <p className="details-scroll-data-images-title">TAMAÑO</p>
-          <p>{details.tamano}</p>
+          <p className="details-scroll-data-images-text">{details.tamano}</p>
         </div>
         <div className="details-scroll-data">
           <div className="details-scroll-data-images-horizontal">
             <img id="img-life" src="assets/Details/life.png" alt="" />
           </div>
           <p className="details-scroll-data-images-title">AÑOS DE VIDA</p>
-          <p>{details.vida}</p>
+          <p className="details-scroll-data-images-text">{details.vida}</p>
         </div>
         <div className="details-scroll-data">
           <div className="details-scroll-data-images-horizontal">
             <img id="img-dureza" src="assets/Details/dureza.png" alt="" />
           </div>
           <p className="details-scroll-data-images-title">DUREZA</p>
-          <p>{details.dureza}</p>
+          <p className="details-scroll-data-images-text">{details.dureza}</p>
         </div>
         <div className="details-scroll-data">
           <div className="details-scroll-data-images-horizontal">
@@ -153,25 +162,29 @@ const Details = () => {
             />
           </div>
           <p className="details-scroll-data-images-title">TEMPERATURA</p>
-          <p>{details.temperatura}</p>
+          <p className="details-scroll-data-images-text">
+            {details.temperatura}
+          </p>
         </div>
         <div className="details-scroll-data">
           <div className="details-scroll-data-images-horizontal">
             <img id="img-espacio" src="assets/Details/espacio.png" alt="" />
           </div>
           <p className="details-scroll-data-images-title">ESPACIO</p>
-          <p>{details.espacio}</p>
+          <p className="details-scroll-data-images-text">{details.espacio}</p>
         </div>
         <div className="details-scroll-data">
           <div className="details-scroll-data-images-horizontal">
             <img
               id="img-temperamento"
               src="assets/Details/temperamento.png"
-              alt=""
+              alt="img"
             />
           </div>
           <p className="details-scroll-data-images-title">TEMPERAMENTO</p>
-          <p>{details.temperamento}</p>
+          <p className="details-scroll-data-images-text">
+            {details.temperamento}
+          </p>
         </div>
       </div>
       <div className="details-title">
