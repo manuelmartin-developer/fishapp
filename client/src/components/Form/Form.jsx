@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { storage } from "../../firebase";
 import { useForm } from "react-hook-form";
 import { app } from "../../firebase";
 import { Link, useHistory } from "react-router-dom";
-import Header from '../Header/Header'
 import TextField from '@mui/material/TextField';
 import Stack from "@mui/material/Stack";
-/* import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField'; */
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+
+
 
 import "./Form.scss"
 
@@ -57,28 +59,36 @@ const Form = () => {
     
   };
 
-  useEffect(async () => {
-    const filesList = await app
-      .firestore()
-      .collection("images")
-      .where("email", "==", email)
-      .get(); //Firebase nos da un objeto
-    setFiles(filesList.docs.map((doc) => doc.data()));
-  }, []);
+  useEffect(() => {
+    if(email) {
 
+      (async () => {
+        const filesList =
+          await app
+          .firestore()
+          .collection("images")
+          .where("email", "==", email)
+          .get(); //Firebase nos da un objeto
+          setFiles(filesList.docs.map((doc) => doc.data()));
+      })()
+    }
+  }, [email]);
 
   const showForm = () => {
     setviewForm(true)
   }
 
+  const Input = styled('input')({
+    display: 'none',
+  });
+
+  
   return (
 
     <section className="form">
-
     <div className="form-image">
       <img src="" alt="" />
     </div>
-      
     <div className="form-container">    
       <form className="form-form" onSubmit={handleSubmit}>
           <p className="form-title">Añadir pez a mi acuario</p>
@@ -87,14 +97,17 @@ const Form = () => {
           <TextField  className="form-input"id="outlined-basic" label="edad del pez" variant="outlined" placeholder="edad" {...register("age", { required: true, minlenght: 3 } )} className="input-value" type="age" name="age" required  />
           <TextField  className="form-input"id="date" type="date"  {...register("adopt", { required: true, minlenght: 3 } )} className="input-value" name="adopt" required   />
           </Stack>
-          <input className="form-input-add"id="outlined-basic" variant="outlined" type="file" onChange={handleChange}  />
+          <label htmlFor="icon-button-file" className="label-add">
+          <Input accept="image/*" id="icon-button-file" type="file" onChange={handleChange} name="url" />
+          <IconButton color="primary" aria-label="upload picture" component="span">
+            <AddToPhotosIcon />
+            <p className="añadirfoto">AÑADIR FOTO</p>
+          </IconButton>
+          </label>
           <button className="form-buttonSave">GUARDAR</button>
-          <button className="form-buttonAdd">AÑADIR OTRO</button>
+          <button className="form-buttonAdd">SALIR</button>
       </form>
     </div>
-
-
-
     </section>
   );
   

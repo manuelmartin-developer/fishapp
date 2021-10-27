@@ -31,7 +31,7 @@ const Home = () => {
     </div>
       <section className="home">
         <div className="home-menu">
-          <p className="home-menu-title">Bienvenido a</p>
+          <p className="home-menu-title"></p>
           <div className="home-menu-buttons">
             <button onClick={()=> {history.push("/camera")}} className="home-menu-buttons__camera"><img src="assets/Home/identificador.png" alt="camera_btn" /></button>
             <button onClick={()=> {history.push("/expert")}} className="home-menu-buttons__diagnosis"><img src="assets/Home/experto.png" alt="diagnosis_btn" /></button>

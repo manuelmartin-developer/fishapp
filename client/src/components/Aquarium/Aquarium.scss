@@ -1,6 +1,6 @@
 
 .aquarium {
- 
+
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -26,10 +26,7 @@
         color: #19204D;
         display: flex;
     
-
-      
     }
-
     &-viewForm {
         display: flex;
         flex-direction: column;
@@ -46,20 +43,27 @@
         align-items: center;
     }
     
-
-
     &-gallery {
 
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+        align-content: center;
 
         &-image {
             display: flex;
             flex-direction: column;
+            width: 64px;
+            margin: 10px;
 
             &-detail {
-                width: 80px;
-                border-radius: 100%;
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                object-fit: cover;
             }
         }
     }
@@ -97,7 +101,6 @@
                 align-items: center;
                 text-align: center;
             }
-
     }
 
     &-text {
@@ -133,7 +136,7 @@
         width: 256px;
         height: 48px;
         /* Color Corporativo/Principal/Acento */
-        background: none;
+        background: transparent;
         border-radius: 85px;
         border: none;
         font-family: Poppins;
@@ -148,18 +151,25 @@
         /* Glub/Poppins/BOTÓN1/16px Extrabold HL24 */
         margin-top: 20px;
             &-show {
-                background: none;
-                border:none;
+
+                background: transparent;
+                border: transparent;
             }
     }
 
+    .aquarium-addButton-show {
+        background: none;
+        border: none;
+    }
 
     .aquarium-containerButton {
-        position: absolute;
-        top: 480px;
-        left: 250px;
-        text-align: center;
-        border: none;
+        width: 64px;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
     }
 
     .aquarium-containerButton-title {
@@ -179,20 +189,3 @@
         color: #FF8878;
     }
 }
-/* 
-.div-camera {
-    width: 75%;
-}
-
-.container-menu {
-    display: flex;
-    flex-direction: column;
-}
-
-.container-login {
-    background: linear-gradient(270deg, #51E3D4 0%, #0081C6 100%);
-    border-radius: 20px;
-    width: 344px;
-    height: 383px;   
-} */
-

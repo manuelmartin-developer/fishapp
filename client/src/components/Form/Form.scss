@@ -29,7 +29,7 @@
         
         input {
 /* Color Corporativo/Light/Aqua/40 */
-            color: #1CB0A1;
+            color: #A7F1E9;
    
         }
 
@@ -138,15 +138,9 @@
 .add-container p {
     width: 93px;
     height: 22px;
-   
+
 }
 
-// Te comento esta clase que afecta a todos los links
-
-// a {
-//     font-size: 14px;
-//     text-decoration: none;
-// }
 
 .container-image img {
     width: 64px;
@@ -158,3 +152,95 @@
     height: 24px;
 }
 
+.css-i4bv87-MuiSvgIcon-root {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-size: 1.5rem;
+    color: #51E3D4 !important;
+}
+
+
+.añadirfoto {
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #23DCC9;
+
+}
+
+.label-add {
+    display: flex;
+    width: 80vw;
+    justify-content: flex-end;
+}
+
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+   
+    border: 2px solid #A7F1E9 !important;
+
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+ 
+    border: 1px solid #1CB0A1 !important;
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+
+    border: 1px solid #23DCC9 !important;
+
+}
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+    font-family: Poppins !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #A7F1E9 !important;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+   
+    padding: 14px !important;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  
+    border: 1px solid #23DCC9 !important;
+}
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+ 
+    border: none !important;
+
+}
+
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+   
+    border: none !important;
+}
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+ 
+    border: none !important;
+
+}

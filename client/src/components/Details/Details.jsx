@@ -33,6 +33,9 @@ const Details = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           history.push("/profile");
+          setPhoto("");
+          setFishName("");
+          setDetails("");
         }
       });
     }
@@ -45,9 +48,6 @@ const Details = () => {
       confirmButtonText: "SI",
     }).then((result) => {
       if (result.isConfirmed) {
-        setPhoto("");
-        setFishName("");
-        setDetails("");
         history.push("/");
       }
     });

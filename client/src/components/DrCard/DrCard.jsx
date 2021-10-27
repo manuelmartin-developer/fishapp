@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Toast } from "../../hooks/useToast";
+import { Toast, Mixin } from "../../hooks/useToast";
 import { useHistory } from "react-router-dom";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import axios from "axios";
 import CloseIcon from "@mui/icons-material/Close";
+
 
 
 import "./DrCard.scss"
@@ -27,7 +28,6 @@ const DrCard = () => {
   const sendConsulta = () => {
     if (!email) {
       Toast.fire({
-        icon: "info",
         title: "Mi Acuario",
         text: " Para esta funcionalidad debes estar loggeado",
       }).then((result) => {
@@ -38,13 +38,16 @@ const DrCard = () => {
     }
     if(isLogged === true){
       Toast.fire({
-        icon: "info",
         title: "Mi consulta",
         text: "¿Deseas mandar tu consulta? Nuestros especialistas se pondrán en contacto una vez recibida.",
       }).then((result) => {
         if (result.isConfirmed) {
           // Aquí llevaría a registro premium
           history.push("/");
+          Mixin.fire({
+            position: "center",
+            title: "Su consulta ha sido recibida",
+          });
         }
       });
     }else{
@@ -203,7 +206,7 @@ const DrCard = () => {
             onInputChange={handleInputChange}
             options={fishesNames.map((option) => option.nombre)}
             renderInput={(params) => (
-              <TextField
+              <TextField  className="input-custom"
                 {...params}
                 label="Busca un pez"
                 InputProps={{
@@ -220,7 +223,7 @@ const DrCard = () => {
             onInputChange={handleInputChange2}
             options={diseases.map((option) => option.enfermedad)}
             renderInput={(params) => (
-              <TextField
+              <TextField className="input-custom"
                 {...params}
                 label="Síntoma 1"
                 InputProps={{
@@ -238,7 +241,7 @@ const DrCard = () => {
             onInputChange={handleInputChange2}
             options={diseases.map((option) => option.enfermedad)}
             renderInput={(params) => (
-              <TextField
+              <TextField className="input-custom"
                 {...params}
                 label="Síntoma 2"
                 InputProps={{

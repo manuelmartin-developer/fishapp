@@ -45,7 +45,9 @@ function Aquarium() {
   return (
   
     <section >
+      
     <HeaderLogo/>
+
     <div className="aquarium">
 
     {files.length === 0 && !start ? (
@@ -83,6 +85,7 @@ function Aquarium() {
       </div>
       </div>
     ) : (
+
       <Form />
     )
 

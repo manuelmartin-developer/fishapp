@@ -25,8 +25,8 @@ const DrCam = () => {
   const photoTips = localStorage.getItem("photoTips");
 
   const videoConstraints = {
-    width: 896,
-    height: 896,
+    width: 360,
+    height: 500,
     facingMode: "user",
     // Cambiar en producción para activar la cámara trasera
     // facingMode: { exact: "environment" },
