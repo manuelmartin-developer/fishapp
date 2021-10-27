@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
 import { Toast } from "../../hooks/useToast";
 import { useHistory } from "react-router-dom";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import axios from "axios";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Header from "../Header/Header";
-import HeaderLogo from "../HeaderLogo/HeaderLogo";
-import Nav from "../Nav";
+import CloseIcon from "@mui/icons-material/Close";
+
 
 import "./DrCard.scss"
 
@@ -31,27 +24,27 @@ const DrCard = () => {
   const [diseaseDescription, setDiseaseDescription] = useState("");
 
 
-  const askExpert = () => {
-    if (!isLogged) {
+  const sendConsulta = () => {
+    if (!email) {
       Toast.fire({
         icon: "info",
         title: "Mi Acuario",
         text: " Para esta funcionalidad debes estar loggeado",
       }).then((result) => {
         if (result.isConfirmed) {
-          history.push("/aquarium");
+          history.push("/profile");
         }
       });
-    } 
-    if(!premiumUser){
+    }
+    if(isLogged === true){
       Toast.fire({
         icon: "info",
-        title: "Mi Experto",
-        text: " Esta en una funcionalidad premium",
+        title: "Mi consulta",
+        text: "¿Deseas mandar tu consulta? Nuestros especialistas se pondrán en contacto una vez recibida.",
       }).then((result) => {
         if (result.isConfirmed) {
           // Aquí llevaría a registro premium
-          history.push("/home");
+          history.push("/");
         }
       });
     }else{
@@ -64,9 +57,25 @@ const DrCard = () => {
     setGoToForm(true);
   };
 
+
   const backHome = () => {
     history.push('/')
   }
+
+
+  const close = () => {
+    Toast.fire({
+      title: "¿Desea salir sin guardar cambios?",
+      text: "Si sales, no se guardarán los cambios realizados",
+      confirmButtonText: "SI",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        history.push("/");
+      }
+    });
+  };
+
+
   const handleInputChange = (event, value) => {
     setDisease("");
     for (let fish of fishesNames) {
@@ -78,6 +87,7 @@ const DrCard = () => {
       }
     }
   };
+
   const handleInputChange2 = (event, value) => {
     for (let disease of diseases) {
       if (disease.enfermedad === value) {
@@ -98,6 +108,7 @@ const DrCard = () => {
       setIslogged(true);
     }
   }, [email]);
+
 
   useEffect(() => {
     if (fishesNames.length === 0) {
@@ -172,43 +183,19 @@ const DrCard = () => {
     }
   }, [fishLatinName]);
 
-  const card = (
-
-    <React.Fragment>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Diagnóstico
-        </Typography>
-        <Typography variant="h4" component="div">
-          {fishName}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {fishLatinName}
-        </Typography>
-        <Typography variant="h5" component="div">
-          {disease}
-        </Typography>
-        <Typography variant="body2">
-          {diseaseDescription}
-          <br />
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button onClick={askExpert} size="small">
-          Hablar con experto
-        </Button>
-      </CardActions>
-    </React.Fragment>
-  );
-
+  
   return (
-    
     <section className="consulta">
-      <HeaderLogo/>
+
+        <div className="diagnosis-close">
+              <button className="diagnosis-close-icon" onClick={() => close()}>
+                <CloseIcon className="diagnosis-close-icon__icon" />
+              </button>
+        </div>
      
         <div className="consulta-checklist">
           <p className="consulta-title">¿Qué síntomas tiene tu pez?</p>
-        <Stack spacing={2} sx={{ width: 300 }}>
+        <Stack spacing={2} sx={{ width: 350 }}>
           <Autocomplete
             freeSolo
             id="free-solo-2-demo"
@@ -261,26 +248,21 @@ const DrCard = () => {
               />
             )}
           />
-          <button className="consulta-searchButton">ACEPTAR</button>
-          <button onClick={()=> {backHome()}} className="consulta-searchButton-no">CANCELAR</button>
-
+          <TextField
+                    id="outlined-multiline-static"
+                    label="Observaciones"
+                    multiline
+                    rows={4}
+                
+                  />
+                
+                <div className="consulta-setButton">
+                  <button onClick={() => {sendConsulta()}}className="consulta-searchButton">ACEPTAR</button>
+                  <button onClick={()=> {backHome()}} className="consulta-searchButton-no">CANCELAR</button>
+                </div>
         </Stack>
         </div>
-
-      {disease ? (
-        <>
-          <br />
-          <Box sx={{ width: 300 }}>
-            <Card variant="outlined">{card}</Card>
-          </Box>
-        </>
-      ) : (
-        <p></p>
-      )}
-    
-   
     </section>
-  
   );
 };
 

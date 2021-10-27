@@ -2,11 +2,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
   
     &-container{
         overflow: hidden;
         height: 100vh !important;
+
+        &-navSearch {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
+
+
     
     &-menu{
         // margin-top: 10px;
@@ -88,10 +99,12 @@
     &-avatar{
         z-index: 9;
         position: relative;
-        bottom: 90px;
-        left: 320px;
+        /* bottom: 90px; */
+        /* left: 320px; */
         border: none;
         background-color: transparent;
+        right: 30px;
+        bottom: 8px;
     }
 
     &-search {

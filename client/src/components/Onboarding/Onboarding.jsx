@@ -46,9 +46,10 @@ const Onboarding = () => {
           <img src="assets/Onboarding/pagina5s.png" alt="" height="400px" />
         </div>
         <div className="onboarding-step">
-          <button onClick={() => skip()}>Saltar</button>
           <img src="assets/Onboarding/pagina6s.png" alt="" height="400px" />
+          <button className="onboarding-final-init" id="init" onClick={() => skip()}>Comenzar</button>
         </div>
+      
         <ViewportSlot>
           <div className="flicking-pagination"></div>
         </ViewportSlot>
