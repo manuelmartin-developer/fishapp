@@ -8,8 +8,6 @@ import "./Aquarium.scss"
 
 
 
-
-
 function Aquarium() {
 
   const history = useHistory()
@@ -47,13 +45,15 @@ function Aquarium() {
   return (
   
     <section >
+      
     <HeaderLogo/>
+
     <div className="aquarium">
 
     {files.length === 0 && !start ? (
       <>
       <div className="aquarium-conta">
-          <img src="assets/Aquarium/Pecera.png" height="160px" alt="" className="pecera"/>
+          <img src="assets/Aquarium/Pecera.png" height="152px" alt="" className="pecera"/>
           <div className="aquarium-class">
             <p>Aún no has agregado peces a tu acuario</p>
           </div>
@@ -85,6 +85,7 @@ function Aquarium() {
       </div>
       </div>
     ) : (
+
       <Form />
     )
 

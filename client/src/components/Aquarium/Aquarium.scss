@@ -1,6 +1,6 @@
 
 .aquarium {
- 
+
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
 
     &-title {
         /* Glub/Poppins/HEADER5B/24px Bold HL32 */
@@ -16,6 +17,7 @@
         font-weight: bold;
         font-size: 24px;
         line-height: 32px;
+        margin-top: 20px; 
         /* or 133% */
         display: flex;
         align-items: center;
@@ -24,10 +26,7 @@
         color: #19204D;
         display: flex;
     
-
-      
     }
-
     &-viewForm {
         display: flex;
         flex-direction: column;
@@ -41,21 +40,30 @@
         box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
         border-radius: 28px;
         z-index: 99999;
+        align-items: center;
     }
-
-
+    
     &-gallery {
 
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+        align-content: center;
 
         &-image {
             display: flex;
             flex-direction: column;
+            width: 64px;
+            margin: 10px;
 
             &-detail {
-                width: 80px;
-                border-radius: 100%;
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                object-fit: cover;
             }
         }
     }
@@ -72,6 +80,7 @@
         flex-wrap: wrap;
         align-items: center;
         z-index: 99999;
+        box-shadow: 0px 5px 17px rgba(38, 48, 115, 0.1), 0px -1px 10px rgba(38, 48, 115, 0.1);
     }
 
     &-class {
@@ -92,7 +101,6 @@
                 align-items: center;
                 text-align: center;
             }
-
     }
 
     &-text {
@@ -104,7 +112,7 @@
 
         p {
             /* Glub/Poppins/BODY/16px Regular HL24 */
-        margin: 25px;
+        margin: 18px;
         font-family: Poppins;
         font-style: normal;
         font-weight: normal;
@@ -128,7 +136,7 @@
         width: 256px;
         height: 48px;
         /* Color Corporativo/Principal/Acento */
-        background: none;
+        background: transparent;
         border-radius: 85px;
         border: none;
         font-family: Poppins;
@@ -141,20 +149,27 @@
         box-shadow: 0px 4px 2px rgba(204, 24, 0, 0.15);
         border-radius: 85px;
         /* Glub/Poppins/BOTÓN1/16px Extrabold HL24 */
-        margin-top: 50px;
+        margin-top: 20px;
             &-show {
-                background: none;
-                border:none;
+
+                background: transparent;
+                border: transparent;
             }
     }
 
+    .aquarium-addButton-show {
+        background: none;
+        border: none;
+    }
 
     .aquarium-containerButton {
-        position: absolute;
-        top: 480px;
-        left: 250px;
-        text-align: center;
-        border: none;
+        width: 64px;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
     }
 
     .aquarium-containerButton-title {
@@ -174,20 +189,3 @@
         color: #FF8878;
     }
 }
-/* 
-.div-camera {
-    width: 75%;
-}
-
-.container-menu {
-    display: flex;
-    flex-direction: column;
-}
-
-.container-login {
-    background: linear-gradient(270deg, #51E3D4 0%, #0081C6 100%);
-    border-radius: 20px;
-    width: 344px;
-    height: 383px;   
-} */
-

@@ -22,16 +22,16 @@ const Home = () => {
       <HeaderLogo />
 
     <section className="home-container">
+    <div className="home-container-navSearch">
       <Search className="home-search" />
-      <Stack direction="row" spacing={2}>
-        <button className="home-avatar" onClick={()=> {history.push("/profile")}}>
+      <button className="home-avatar" onClick={()=> {history.push("/profile")}}>
           <Avatar sx={{ width: 28, height: 28
- }} alt="Remy Sharp" src="assets/Home/group.png" />
+            }} alt="Remy Sharp" src="assets/Home/group.png" />
         </button>
-      </Stack>
+    </div>
       <section className="home">
         <div className="home-menu">
-          <p className="home-menu-title">Bienvenido a</p>
+          <p className="home-menu-title"></p>
           <div className="home-menu-buttons">
             <button onClick={()=> {history.push("/camera")}} className="home-menu-buttons__camera"><img src="assets/Home/identificador.png" alt="camera_btn" /></button>
             <button onClick={()=> {history.push("/expert")}} className="home-menu-buttons__diagnosis"><img src="assets/Home/experto.png" alt="diagnosis_btn" /></button>
@@ -40,8 +40,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <Nav />
     </section>
+    <Nav />
     </>
   );
 };

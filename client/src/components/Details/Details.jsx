@@ -33,6 +33,9 @@ const Details = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           history.push("/profile");
+          setPhoto("");
+          setFishName("");
+          setDetails("");
         }
       });
     }
@@ -88,11 +91,19 @@ const Details = () => {
       </div>
       <div className="details-thumbs">
         <div className="details-thumbs-macho">
-          <img className="details-thumbs-macho" src={`assets/Details/${fishNameImg}_macho.jpg`} alt="fish_photo" />
+          <img
+            className="details-thumbs-macho"
+            src={`assets/Details/${fishNameImg}_macho.jpg`}
+            alt="fish_photo"
+          />
           <p className="details-thumbs-macho-text">Macho</p>
         </div>
         <div className="details-thumbs-hembra">
-          <img className="details-thumbs-hembra" src={`assets/Details/${fishNameImg}_hembra.jpg`} alt="fish_photo" />
+          <img
+            className="details-thumbs-hembra"
+            src={`assets/Details/${fishNameImg}_hembra.jpg`}
+            alt="fish_photo"
+          />
           <p className="details-thumbs-hembra-text">Hembra</p>
         </div>
       </div>
