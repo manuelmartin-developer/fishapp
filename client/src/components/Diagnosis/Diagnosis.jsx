@@ -9,6 +9,7 @@ import Nav from "../Nav/Nav";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import HeaderLogo from '../HeaderLogo'; 
+import { red } from "@mui/material/colors";
 
 const Diagnosis = () => {
   const email = localStorage.getItem("email");
@@ -259,7 +260,7 @@ const Diagnosis = () => {
                   onInputChange={handleInputChange}
                   options={fishesNames.map((option) => option.nombre)}
                   renderInput={(params) => (
-                    <TextField
+                    <TextField className="input-diagnosis"
                       {...params}
                       label="Busca un pez"
                       InputProps={{
@@ -276,7 +277,7 @@ const Diagnosis = () => {
                   onInputChange={handleInputChange2}
                   options={diseases.map((option) => option.sintoma)}
                   renderInput={(params) => (
-                    <TextField
+                    <TextField className="input-diagnosis"
                       {...params}
                       label="Selecciona un síntoma"
                       InputProps={{
