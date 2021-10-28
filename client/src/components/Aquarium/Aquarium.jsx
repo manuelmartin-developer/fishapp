@@ -87,7 +87,7 @@ function Aquarium() {
           {files.map((file, index) => ( /* Pinta los datos de la data base, almacenados denteo del estado files. */
             <div className="aquarium-gallery-image" key={index}>
                 <img className="aquarium-gallery-image-detail" src={file.url} alt="" /> 
-                <h3>{file.name}</h3>
+                <h3 className="name-input">{file.name}</h3>
             </div>
           ))}
           <div className="aquarium-containerButton">
