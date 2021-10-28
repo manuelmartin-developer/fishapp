@@ -192,7 +192,7 @@ const DrCard = () => {
     <section className="consulta">
 
         <div className="diagnosis-close">
-              <button className="diagnosis-close-icon" onClick={() => close()}>
+              <button className="diagnosis-close-icon2" onClick={() => close()}>
                 <CloseIcon className="diagnosis-close-icon__icon" />
               </button>
         </div>

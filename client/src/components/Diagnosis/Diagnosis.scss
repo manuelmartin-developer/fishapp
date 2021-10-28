@@ -25,10 +25,19 @@
   }
 
   &-close {
-    position: relative;
-    top: 34px;
-    right: 155px;
-    &-icon {
+    &-icon1 {
+      position: relative;
+      top: 0px;
+      right: 155px;
+      background-color: transparent;
+      border: none;
+      color: #51e3d4;
+      outline: none;
+    }
+    &-icon2 {
+      position: relative;
+      top: 34px;
+      right: 155px;
       background-color: transparent;
       border: none;
       color: #51e3d4;

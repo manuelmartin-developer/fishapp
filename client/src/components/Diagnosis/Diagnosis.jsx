@@ -174,6 +174,13 @@ const Diagnosis = () => {
     }
   }, [fishLatinName]);
   const close = () => {
+
+    Toast.fire({
+      title: "¿Deseas salir sin guardar cambios?",
+      text: "Si sales no sabrás que le pasa a tu pez",
+      confirmButtonText: "SI",
+    }).then((result) => {
+      if (result.isConfirmed) {
         setGoToForm(false);
         setFishName("");
         setFishLatinName("");
@@ -185,6 +192,8 @@ const Diagnosis = () => {
         setSeeDiseases(false);
         setDiseaseDetails(false);
         history.push("/");
+      }
+    });
   };
   useEffect(() => {
     if (disease) {
@@ -235,7 +244,7 @@ const Diagnosis = () => {
         ) : (
           <>
             <div className="diagnosis-close">
-              <button className="diagnosis-close-icon" onClick={() => close()}>
+              <button className="diagnosis-close-icon1" onClick={() => close()}>
                 <CloseIcon className="diagnosis-close-icon__icon" />
               </button>
             </div>
@@ -301,7 +310,7 @@ const Diagnosis = () => {
         {!diseaseDetails ? (
           <div className="diagnosis-disease">
             <div className="diagnosis-close">
-              <button className="diagnosis-close-icon" onClick={() => close()}>
+              <button className="diagnosis-close-icon2" onClick={() => close()}>
                 <CloseIcon className="diagnosis-close-icon__icon" />
               </button>
             </div>
@@ -335,7 +344,7 @@ const Diagnosis = () => {
         ) : (
           <div className="diagnosis-info">
           <div className="diagnosis-close">
-            <button className="diagnosis-close-icon" onClick={() => close()}>
+            <button className="diagnosis-close-icon2" onClick={() => close()}>
               <CloseIcon className="camera-close-icon__icon" />
             </button>
           </div>

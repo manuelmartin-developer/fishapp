@@ -81,12 +81,14 @@ const Search = () => {
       <Stack className="search-stack" spacing={2} sx={{ width: 344}}>
       <Autocomplete  
           freeSolo
+          sx={{paddingLeft: 4, display:"flex", alignItems:"center"}}
           id="free-solo-2-demo"
           disableClearable
           onInputChange={handleInputChange}
           options={fishesNames.map((option) => option.nombre)}
           renderInput={(params) => (
             <TextField
+            sx={{display:"flex", alignItems:"center"}}
               {...params}
               label="Buscar pez"
               InputProps={{

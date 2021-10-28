@@ -24,6 +24,7 @@ const Home = () => {
     <section className="home-container">
     <div className="home-container-navSearch">
       <Search className="home-search" />
+      <img id="lupa" src="assets/Home/lupa.svg" alt="lupa_icon" />
       <button className="home-avatar" onClick={()=> {history.push("/profile")}}>
           <Avatar sx={{ width: 28, height: 28
             }} alt="Remy Sharp" src="assets/Home/group.png" />

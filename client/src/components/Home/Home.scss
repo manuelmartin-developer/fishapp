@@ -101,12 +101,10 @@
     &-avatar{
         z-index: 9;
         position: relative;
-        /* bottom: 90px; */
-        /* left: 320px; */
         border: none;
         background-color: transparent;
-        right: 30px;
-        bottom: 8px;
+        right: 65px;
+        bottom: 12px;
     }
 
     &-search {
@@ -114,21 +112,11 @@
     }
 
 }
-
-
-.css-1gnz8kn-MuiBottomNavigation-root {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    /* height: 56px; */
-    /* background-color: #fff; */
-    width: 100%;
-    background: transparent;
-    background-color: transparent;
+#lupa{
+position: relative;
+height: 24px;
+top: 45px;
+right: 325px;
+z-index: 9999;
 
 }
