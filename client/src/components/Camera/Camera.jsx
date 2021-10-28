@@ -46,7 +46,7 @@ const Camera = () => {
       setLoading(false);
     }, 3000);
 
-    setFishName("guppy");
+    setFishName("goldfish");
 
     // const payload = { data: photo };
 

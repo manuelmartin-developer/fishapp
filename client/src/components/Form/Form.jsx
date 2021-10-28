@@ -8,6 +8,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+import { Mixin } from "../../hooks/useToast";
 
 
 
@@ -55,7 +56,11 @@ const Form = () => {
             adopt: fileAdop,
             url: fileUrl,
             });
-    history.goBack();
+            Mixin.fire({
+              position: "center",
+              title: "Su pez ha sido añadido a Mi acuario",
+            });
+    history.push("/");
     
   };
 
