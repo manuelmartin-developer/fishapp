@@ -47,6 +47,8 @@ const DrCam = () => {
       if (result.isConfirmed) {
         setPhoto("");
         history.push("/expertcontact");
+    }else{
+      setPhoto("");
     }
   });
 };

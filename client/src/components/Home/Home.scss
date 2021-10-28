@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
+
   
     &-container{
         overflow: hidden;
@@ -37,6 +37,8 @@
             line-height: 28px;
             text-align: center;
             margin-top: 28px;
+            color: #19204D
+            ;
         }
 
         &-buttons{

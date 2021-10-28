@@ -32,27 +32,37 @@ const Diagnosis = () => {
     if (!email) {
       Toast.fire({
         title: "Mi Acuario",
-        text: " Para esta funcionalidad debes estar loggeado",
+        text: "Para guardar fotos debes estar loggeado",
+        confirmButtonText:"LOGIN"
       }).then((result) => {
         if (result.isConfirmed) {
-          history.push("/aquarium");
+          setGoToForm(false);
+          setFishName("");
+          setFishLatinName("");
+          setFishLatinName("");
+          setFishName("");
+          setDiseases([]);
+          setDisease("");
+          setDiseaseDescription([]);
+          setSeeDiseases(false);
+          setDiseaseDetails(false);
+          history.push("/profile");
         }
       });
+    }else{
+      setGoToForm(false);
+      setFishName("");
+      setFishLatinName("");
+      setFishLatinName("");
+      setFishName("");
+      setDiseases([]);
+      setDisease("");
+      setDiseaseDescription([]);
+      setSeeDiseases(false);
+      setDiseaseDetails(false);
+      history.push("/expert")
     }
-    if (!premiumUser) {
-      Toast.fire({
-        icon: "info",
-        title: "Mi Experto",
-        text: " Esta en una funcionalidad premium",
-      }).then((result) => {
-        if (result.isConfirmed) {
-            
-        }
-      });
-    } else {
-      // Aquí redirigir a mi experto
-      console.log("A mi experto");
-    }
+ 
   };
 
   const seeForm = () => {
@@ -164,12 +174,6 @@ const Diagnosis = () => {
     }
   }, [fishLatinName]);
   const close = () => {
-    Toast.fire({
-      title: "¿Desea salir sin hacer tu consulta?",
-      text: "Si sales, no sabrás que le pasa a tu pez",
-      confirmButtonText: "SI",
-    }).then((result) => {
-      if (result.isConfirmed) {
         setGoToForm(false);
         setFishName("");
         setFishLatinName("");
@@ -180,9 +184,7 @@ const Diagnosis = () => {
         setDiseaseDescription([]);
         setSeeDiseases(false);
         setDiseaseDetails(false);
-        history.push("/diagnosis");
-      }
-    });
+        history.push("/");
   };
   useEffect(() => {
     if (disease) {

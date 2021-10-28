@@ -30,6 +30,7 @@ const Details = () => {
       Toast.fire({
         title: "Mi Acuario",
         text: "Para guardar fotos debes estar loggeado",
+        confirmButtonText:"LOGIN"
       }).then((result) => {
         if (result.isConfirmed) {
           history.push("/profile");
@@ -45,7 +46,7 @@ const Details = () => {
     setPhoto("");
     setFishName("");
     setDetails("");
-    history.push("/camera");
+    history.goBack();
   };
 
   useEffect(() => {

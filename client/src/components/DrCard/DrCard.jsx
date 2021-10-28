@@ -29,6 +29,7 @@ const DrCard = () => {
     if (!email) {
       Toast.fire({
         title: "Mi Acuario",
+        confirmButtonText: "LOGIN",
         text: " Para esta funcionalidad debes estar loggeado",
       }).then((result) => {
         if (result.isConfirmed) {

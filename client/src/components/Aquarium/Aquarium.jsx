@@ -5,6 +5,7 @@ import { app } from "../../firebase";
 import Nav from "../Nav";
 import { useHistory } from "react-router-dom";
 import "./Aquarium.scss"
+import { Toast } from "../../hooks/useToast";
 
 
 
@@ -17,8 +18,21 @@ function Aquarium() {
   const email = localStorage.getItem("email");
 
   const starter = () => {
-    setNewSart(true)
-    /* history.push("/profile") */
+    if(!email){
+      Toast.fire({
+        title: "Mi Acuario",
+        text: "Para anadir peces debes estar loggeado",
+        confirmButtonText:"LOGIN"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/profile");
+        }
+      });
+    }else{
+
+      setNewSart(true)
+      /* history.push("/profile") */
+    }
   }
   const showForm = () => {
    setviewForm(true) 
@@ -50,7 +64,7 @@ function Aquarium() {
 
     <div className="aquarium">
 
-    {files.length === 0 && !start ? (
+    {!start ? (
       <>
       <div className="aquarium-conta">
           <img src="assets/Aquarium/Pecera.png" height="152px" alt="" className="pecera"/>

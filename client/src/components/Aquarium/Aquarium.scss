@@ -1,6 +1,7 @@
 
 .aquarium {
 
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -48,6 +49,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        max-height: 35rem;
         justify-content: center;
         align-items: center;
         height: 80%;
@@ -56,8 +58,9 @@
         &-image {
             display: flex;
             flex-direction: column;
+            align-items: center;
             width: 64px;
-            margin: 10px;
+            margin: 30px;
 
             &-detail {
                 width: 64px;
@@ -100,6 +103,7 @@
                 display: flex;
                 align-items: center;
                 text-align: center;
+                color: #19204D
             }
     }
 
@@ -122,6 +126,8 @@
         display: flex;
         align-items: center;
         text-align: center;
+        color: #263073
+        ;
         }
     }
 
@@ -151,7 +157,7 @@
         /* Glub/Poppins/BOTÓN1/16px Extrabold HL24 */
         margin-top: 20px;
             &-show {
-
+                
                 background: transparent;
                 border: transparent;
             }
@@ -164,7 +170,7 @@
 
     .aquarium-containerButton {
         width: 64px;
-        margin: 10px;
+        margin: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;

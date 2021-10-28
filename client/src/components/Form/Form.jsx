@@ -55,7 +55,7 @@ const Form = () => {
             adopt: fileAdop,
             url: fileUrl,
             });
-    history.push('/')
+    history.goBack();
     
   };
 
@@ -82,6 +82,9 @@ const Form = () => {
     display: 'none',
   });
 
+  const exit = () => {
+    history.push("/");
+  }
   
   return (
 
@@ -105,8 +108,8 @@ const Form = () => {
           </IconButton>
           </label>
           <button className="form-buttonSave">GUARDAR</button>
-          <button className="form-buttonAdd">SALIR</button>
       </form>
+          <button onClick={()=> {exit()}} className="form-buttonAdd">SALIR</button>
     </div>
     </section>
   );
